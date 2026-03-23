@@ -156,10 +156,22 @@
     .product-img-wrapper {
       position: relative; aspect-ratio: 4/3;
       background: linear-gradient(135deg, #0d2030, #091520);
-      display: flex; align-items: center; justify-content: center; overflow: hidden;
+      overflow: hidden;
     }
 
-    .product-emoji { font-size: 3.2rem; }
+    /* Photo produit sur la carte */
+    .product-img-wrapper img.product-photo {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+
+    /* Fallback emoji si pas de photo */
+    .product-emoji-fallback {
+      display: none;
+      width: 100%; height: 100%;
+      align-items: center; justify-content: center;
+      font-size: 3.2rem;
+    }
 
     .out-of-stock-badge {
       position: absolute; top: 7px; right: 7px;
@@ -226,23 +238,37 @@
       border-radius: 2px; margin: 0 auto 18px;
     }
 
+    /* Wrapper media modal (photo ou vidéo) */
     .modal-img-wrap {
       width: 100%; aspect-ratio: 16/9; border-radius: 12px;
       overflow: hidden; background: linear-gradient(135deg, #0d2030, #091520);
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 14px; font-size: 5rem; position: relative;
+      margin-bottom: 14px; position: relative;
+    }
+
+    .modal-img-wrap video,
+    .modal-img-wrap img.modal-media {
+      width: 100%; height: 100%;
+      object-fit: cover; border-radius: 12px;
+    }
+
+    /* Fallback emoji dans modal */
+    .modal-emoji-fallback {
+      font-size: 5rem;
     }
 
     .modal-thc-tag {
       position: absolute; top: 10px; left: 10px;
       background: var(--teal); color: #07111a;
       font-size: 0.7rem; padding: 4px 10px; border-radius: 10px; font-weight: 800;
+      z-index: 2;
     }
 
     .modal-legal-tag {
       position: absolute; top: 10px; right: 10px;
       background: rgba(232,184,75,0.92); color: #07111a;
       font-size: 0.62rem; padding: 4px 10px; border-radius: 10px; font-weight: 700;
+      z-index: 2;
     }
 
     .modal-id {
@@ -404,6 +430,11 @@
       font-size: 2rem; width: 50px; height: 50px;
       background: var(--bg-card2); border-radius: 10px;
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .cart-item-emoji img {
+      width: 100%; height: 100%; object-fit: cover; border-radius: 10px;
     }
 
     .cart-item-info { flex: 1; min-width: 0; }
@@ -733,13 +764,19 @@
   tg.ready();
   tg.expand();
 
-  // ===== PRODUITS =====
+  // =========================================================
+  // PRODUITS — modifie img et video avec tes vrais fichiers
+  // img:   "photos/nom.jpg"   (obligatoire, sinon emoji affiché)
+  // video: "videos/nom.mp4"   (optionnel, null si pas de vidéo)
+  // =========================================================
   const PRODUCTS = [
     {
       id: "si44-001-a1b2c3d4e5",
       name: "Résine Hash",
       category: "SHIT", brand: "Island Extracts",
       stock: 25, emoji: "🟤", thc: "15% THC",
+      img:   "photos/hash.jpg",
+      video: "videos/hash.mp4",
       desc: "Résine premium, texture souple. Arômes terreux et boisés. Qualité testée.",
       grammes: [
         { label: "1g",  price: 12 },
@@ -754,6 +791,8 @@
       name: "Résine Blonde",
       category: "SHIT", brand: "Island Extracts",
       stock: 18, emoji: "🟡", thc: "20% THC",
+      img:   "photos/blonde.jpg",
+      video: "videos/blonde.mp4",
       desc: "Résine blonde pressée à froid. Effet puissant, qualité premium.",
       grammes: [
         { label: "1g",  price: 13 },
@@ -768,6 +807,8 @@
       name: "Résine Ice",
       category: "SHIT", brand: "Island Extracts",
       stock: 14, emoji: "⚪", thc: "25% THC",
+      img:   "photos/ice.jpg",
+      video: "videos/ice.mp4",
       desc: "Ice-o-lator full spectrum. Texture granuleuse, arômes floraux intenses.",
       grammes: [
         { label: "1g",  price: 15 },
@@ -782,6 +823,8 @@
       name: "Beuh Premium",
       category: "BEUH", brand: "CoralCBD",
       stock: 30, emoji: "🥦", thc: "20% THC",
+      img:   "photos/beuh_premium.jpg",
+      video: "videos/beuh_premium.mp4",
       desc: "Beuh indoor qualité top. Arômes fruités, effet puissant.",
       grammes: [
         { label: "1g",  price: 12 },
@@ -796,6 +839,8 @@
       name: "Beuh OG Kush",
       category: "BEUH", brand: "CoralCBD",
       stock: 20, emoji: "🌿", thc: "22% THC",
+      img:   "photos/ogkush.jpg",
+      video: "videos/ogkush.mp4",
       desc: "OG Kush indoor. Arômes boisés et épicés, effet long.",
       grammes: [
         { label: "1g",  price: 13 },
@@ -810,6 +855,8 @@
       name: "Beuh Haze",
       category: "BEUH", brand: "TropicalZen",
       stock: 25, emoji: "💚", thc: "18% THC",
+      img:   "photos/haze.jpg",
+      video: "videos/haze.mp4",
       desc: "Haze indoor arômes tropical et fruité. Idéal pour la journée.",
       grammes: [
         { label: "1g",  price: 11 },
@@ -824,6 +871,8 @@
       name: "Beuh Cookies",
       category: "BEUH", brand: "Island Extracts",
       stock: 0, emoji: "🍪", thc: "24% THC",
+      img:   "photos/cookies.jpg",
+      video: null,
       desc: "Girl Scout Cookies — sold out momentanément.",
       grammes: [
         { label: "1g",  price: 14 },
@@ -838,6 +887,8 @@
       name: "Pack Découverte",
       category: "PROMO", brand: "Island Extracts",
       stock: 15, emoji: "🎁", thc: "—",
+      img:   "photos/pack_decouverte.jpg",
+      video: "videos/pack_decouverte.mp4",
       desc: "2g Shit + 2g Beuh au meilleur prix. Idéal pour tester.",
       grammes: [
         { label: "Pack S", price: 30 },
@@ -850,6 +901,8 @@
       name: "Pack Fidélité",
       category: "PROMO", brand: "TropicalZen",
       stock: 10, emoji: "⭐", thc: "—",
+      img:   "photos/pack_fidelite.jpg",
+      video: null,
       desc: "5g au choix Shit ou Beuh — prix dégressif fidélité client.",
       grammes: [
         { label: "5g",  price: 55 },
@@ -860,11 +913,11 @@
   ];
 
   // ===== STATE =====
-  let cart          = {};
-  let isNantes      = false;
-  let currentProduct  = null;
-  let currentQty      = 1;
-  let currentGramIdx  = 0;
+  let cart           = {};
+  let isNantes       = false;
+  let currentProduct = null;
+  let currentQty     = 1;
+  let currentGramIdx = 0;
 
   // ===== BADGES =====
   function getCartTotal() {
@@ -959,9 +1012,21 @@
       return;
     }
 
+    // Miniature panier : photo si dispo, sinon emoji
+    function cartThumb(item) {
+      if (item.product.img) {
+        return `<img src="${item.product.img}" alt=""
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                     style="width:100%;height:100%;object-fit:cover;border-radius:10px;" />
+                <span style="display:none;width:100%;height:100%;align-items:center;
+                             justify-content:center;font-size:1.6rem">${item.product.emoji}</span>`;
+      }
+      return item.product.emoji;
+    }
+
     const listHTML = items.map(item => `
       <div class="cart-item">
-        <div class="cart-item-emoji">${item.product.emoji}</div>
+        <div class="cart-item-emoji">${cartThumb(item)}</div>
         <div class="cart-item-info">
           <div class="cart-item-name">${item.product.name}</div>
           <div class="cart-item-price">${(item.product.price * item.qty).toFixed(2)} €</div>
@@ -1021,24 +1086,33 @@
       return;
     }
 
-    grid.innerHTML = products.map(p => `
-      <div class="product-card ${p.stock === 0 ? 'out-of-stock' : ''}">
-        <div class="product-img-wrapper">
-          <div class="product-emoji">${p.emoji}</div>
-          ${p.stock === 0 ? '<div class="out-of-stock-badge">ÉPUISÉ</div>' : ''}
-        </div>
-        <div class="product-info">
-          <div class="product-name">${p.name}</div>
-          <div class="product-cat">• ${p.category}</div>
-          <div class="product-footer">
-            <span class="product-price">dès ${p.grammes[0].price} €</span>
-            <span class="product-stock">📦 ${p.stock}</span>
+    grid.innerHTML = products.map(p => {
+      // Photo ou fallback emoji
+      const imgHTML = p.img
+        ? `<img class="product-photo" src="${p.img}" alt="${p.name}"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+           <div class="product-emoji-fallback" style="display:none">${p.emoji}</div>`
+        : `<div class="product-emoji-fallback" style="display:flex">${p.emoji}</div>`;
+
+      return `
+        <div class="product-card ${p.stock === 0 ? 'out-of-stock' : ''}">
+          <div class="product-img-wrapper">
+            ${imgHTML}
+            ${p.stock === 0 ? '<div class="out-of-stock-badge">ÉPUISÉ</div>' : ''}
           </div>
-          <button class="btn-detail" onclick="openModal('${p.id}')">
-            🔍 Détails & Commander
-          </button>
-        </div>
-      </div>`).join('');
+          <div class="product-info">
+            <div class="product-name">${p.name}</div>
+            <div class="product-cat">• ${p.category}</div>
+            <div class="product-footer">
+              <span class="product-price">dès ${p.grammes[0].price} €</span>
+              <span class="product-stock">📦 ${p.stock}</span>
+            </div>
+            <button class="btn-detail" onclick="openModal('${p.id}')">
+              🔍 Détails & Commander
+            </button>
+          </div>
+        </div>`;
+    }).join('');
   }
 
   function applyFilters() {
@@ -1057,6 +1131,23 @@
     currentQty     = 1;
     currentGramIdx = 0;
 
+    // Vidéo si dispo, sinon photo, sinon emoji
+    let mediaHTML;
+    if (currentProduct.video) {
+      mediaHTML = `
+        <video src="${currentProduct.video}"
+               poster="${currentProduct.img || ''}"
+               controls playsinline preload="metadata"
+               style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></video>`;
+    } else if (currentProduct.img) {
+      mediaHTML = `
+        <img class="modal-media" src="${currentProduct.img}" alt="${currentProduct.name}"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="modal-emoji-fallback" style="display:none">${currentProduct.emoji}</div>`;
+    } else {
+      mediaHTML = `<div class="modal-emoji-fallback">${currentProduct.emoji}</div>`;
+    }
+
     const grammesHTML = currentProduct.grammes.map((g, i) => `
       <button class="gram-btn ${i === 0 ? 'active' : ''}"
               onclick="selectGram(${i})">
@@ -1065,9 +1156,10 @@
       </button>`).join('');
 
     document.getElementById('modal-img-wrap').innerHTML = `
-      <span style="font-size:5rem">${currentProduct.emoji}</span>
+      ${mediaHTML}
       <div class="modal-thc-tag">${currentProduct.thc}</div>
       <div class="modal-legal-tag">✅ Top qualité</div>`;
+
     document.getElementById('modal-id').innerHTML      = `🏷 ${currentProduct.id}`;
     document.getElementById('modal-name').textContent  = currentProduct.name;
     document.getElementById('modal-cat').textContent   = `${currentProduct.brand} · ${currentProduct.category}`;
@@ -1108,8 +1200,16 @@
     tg.HapticFeedback.selectionChanged();
   }
 
-  function closeModal()    { document.getElementById('modal').classList.remove('active'); }
-  function closeModalBg(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+  function closeModal() {
+    // Stop la vidéo quand on ferme
+    const video = document.querySelector('#modal-img-wrap video');
+    if (video) { video.pause(); video.currentTime = 0; }
+    document.getElementById('modal').classList.remove('active');
+  }
+
+  function closeModalBg(e) {
+    if (e.target === document.getElementById('modal')) closeModal();
+  }
 
   // ===== CONTACT =====
   function copyToClipboard(text) {
