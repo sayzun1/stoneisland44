@@ -250,13 +250,7 @@
 
     .modal-desc {
       font-size: 0.76rem; color: var(--muted);
-      line-height: 1.55; margin-bottom: 8px;
-    }
-
-    .modal-legal-notice {
-      background: rgba(232,184,75,0.1); border: 1px solid rgba(232,184,75,0.3);
-      border-radius: 10px; padding: 8px 12px;
-      font-size: 0.68rem; color: #c8a84a; margin-bottom: 14px; line-height: 1.4;
+      line-height: 1.55; margin-bottom: 14px;
     }
 
     .modal-price {
@@ -315,7 +309,6 @@
     /* ===== PANIER ===== */
     .cart-header { padding: 16px 16px 4px; }
 
-    /* Toggle Nantes */
     .nantes-toggle-wrap { padding: 0 12px 10px; }
 
     .nantes-toggle-card {
@@ -326,11 +319,7 @@
     }
 
     .nantes-toggle-card:active { background: var(--bg-card2); }
-
-    .nantes-toggle-card.on {
-      border-color: var(--teal);
-      background: rgba(42,184,160,0.08);
-    }
+    .nantes-toggle-card.on { border-color: var(--teal); background: rgba(42,184,160,0.08); }
 
     .nantes-toggle-label { font-weight: 700; font-size: 0.88rem; }
     .nantes-toggle-sub   { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
@@ -550,9 +539,9 @@
       <div class="filters-row">
         <select class="filter-select" id="filter-cat" onchange="applyFilters()">
           <option value="">Catégories</option>
-          <option value="Résines CBD">SHIT🍫</option>
-          <option value="Huiles CBD">BEUH🥦</option>
-          <option value="Cosmétiques">PROMO🎁​</option>
+          <option value="SHIT">SHIT 🍫</option>
+          <option value="BEUH">BEUH 🥦</option>
+          <option value="PROMO">PROMO 🎁</option>
         </select>
         <select class="filter-select" id="filter-brand" onchange="applyFilters()">
           <option value="">Farmes</option>
@@ -577,7 +566,6 @@
       <div class="section-title" style="padding:0;">🛒 Mon Panier</div>
     </div>
 
-    <!-- Toggle Nantes -->
     <div class="nantes-toggle-wrap" id="nantes-wrap" style="display:none;">
       <div class="nantes-toggle-card" id="nantes-card" onclick="toggleNantes()">
         <div>
@@ -598,7 +586,7 @@
     <div class="section-title">Contact</div>
 
     <div class="legal-banner">
-      ⚖️ Tous nos produits sont de qualité et test.
+      🌿 Tous nos produits sont de qualité et testés.
     </div>
 
     <div class="contact-wrap">
@@ -654,6 +642,7 @@
         <div class="contact-row">🆓 <span>Frais offerts dès 50 € (hors Nantes)</span></div>
         <div class="contact-row">↩️ <span>SAV sous 48h</span></div>
       </div>
+
     </div>
   </div>
 
@@ -666,7 +655,6 @@
       <div class="modal-name"  id="modal-name"></div>
       <div class="modal-cat"   id="modal-cat"></div>
       <div class="modal-desc"  id="modal-desc"></div>
-      <div class="modal-legal-notice" id="modal-legal"></div>
       <div class="modal-price" id="modal-price"></div>
       <div class="modal-stock-info" id="modal-stock"></div>
       <div class="qty-row">
@@ -708,69 +696,79 @@
   tg.expand();
 
   // ===== PRODUITS =====
+  // ⚠️ Remplace les desc/thc/price par tes vrais produits
   const PRODUCTS = [
     {
       id: "si44-001-a1b2c3d4e5",
-      name: "Résine Hash  1g",
-      category: "Résines CBD", brand: "Island Extracts",
-      price: 9.90, stock: 25, emoji: "🟤", thc: "< 15% THC",
-
+      name: "Résine Hash 1g",
+      category: "SHIT", brand: "Island Extracts",
+      price: 9.90, stock: 25, emoji: "🟤",
+      thc: "15% THC",
+      desc: "Résine premium qualité. Contacte-nous pour plus d'infos."
     },
     {
       id: "si44-002-b2c3d4e5f6",
-      name: "Résine Blonde CBD 2g",
-      category: "Résines CBD", brand: "Island Extracts",
-      price: 17.90, stock: 18, emoji: "🟡", thc: "< 20% THC",
-      
+      name: "Résine Blonde 2g",
+      category: "SHIT", brand: "Island Extracts",
+      price: 17.90, stock: 18, emoji: "🟡",
+      thc: "20% THC",
+      desc: "Résine blonde texture souple. Contacte-nous pour plus d'infos."
     },
     {
       id: "si44-003-c3d4e5f6a7",
-      name: "Huile CBD 10% — 10ml",
-      category: "Huiles CBD", brand: "CoralCBD",
-      price: 24.90, stock: 30, emoji: "💧", thc: "< 20% THC",
-
+      name: "Beuh Premium 1g",
+      category: "BEUH", brand: "CoralCBD",
+      price: 10.00, stock: 30, emoji: "🥦",
+      thc: "20% THC",
+      desc: "Beuh premium qualité top. Contacte-nous pour plus d'infos."
     },
     {
       id: "si44-004-d4e5f6a7b8",
-      name: "Huile CBD 20% — 10ml",
-      category: "Huiles CBD", brand: "CoralCBD",
-      price: 39.90, stock: 12, emoji: "🌊", thc: "< 15% THC",
- 
+      name: "Beuh OG 2g",
+      category: "BEUH", brand: "CoralCBD",
+      price: 18.00, stock: 12, emoji: "🌿",
+      thc: "22% THC",
+      desc: "OG Kush qualité supérieure. Contacte-nous pour plus d'infos."
     },
     {
       id: "si44-005-e5f6a7b8c9",
-      name: "Baume Corps CBD 50ml",
-      category: "Cosmétiques", brand: "TropicalZen",
-      price: 22.00, stock: 20, emoji: "🫙", thc: "15% THC",
-      
+      name: "Beuh Haze 1g",
+      category: "BEUH", brand: "TropicalZen",
+      price: 10.00, stock: 20, emoji: "💚",
+      thc: "18% THC",
+      desc: "Haze arômes fruités. Contacte-nous pour plus d'infos."
     },
     {
       id: "si44-006-f6a7b8c9d0",
-      name: "Crème Visage CBD 30ml",
-      category: "Cosmétiques", brand: "TropicalZen",
-      price: 28.00, stock: 15, emoji: "✨", thc: "25% THC",
-     
+      name: "Pack Découverte",
+      category: "PROMO", brand: "Island Extracts",
+      price: 25.00, stock: 15, emoji: "🎁",
+      thc: "—",
+      desc: "Pack découverte : 2g Shit + 2g Beuh au meilleur prix."
     },
     {
       id: "si44-007-a7b8c9d0e1",
-      name: "Infusion CBD Tropical",
-      category: "Infusions", brand: "TropicalZen",
-      price: 11.90, stock: 40, emoji: "🍵", thc: "< 20% THC",
-   
+      name: "Pack Fidélité 5g",
+      category: "PROMO", brand: "TropicalZen",
+      price: 40.00, stock: 10, emoji: "⭐",
+      thc: "—",
+      desc: "5g au choix Shit ou Beuh — prix dégressif fidélité."
     },
     {
       id: "si44-008-b8c9d0e1f2",
-      name: "Coffret Island Starter",
-      category: "Coffrets", brand: "Island Extracts",
-      price: 49.90, stock: 8, emoji: "🎁", thc: "< 25% THC",
-
+      name: "Résine Ice 1g",
+      category: "SHIT", brand: "Island Extracts",
+      price: 12.90, stock: 8, emoji: "⚪",
+      thc: "25% THC",
+      desc: "Ice-o-lator texture granuleuse, arômes intenses."
     },
     {
       id: "si44-009-c9d0e1f2a3",
-      name: "Résine Ice CBD 1g",
-      category: "Résines CBD", brand: "Island Extracts",
-      price: 12.90, stock: 0, emoji: "⚪", thc: "< 25% THC",
-
+      name: "Beuh Cookies 1g",
+      category: "BEUH", brand: "Island Extracts",
+      price: 11.00, stock: 0, emoji: "🍪",
+      thc: "24% THC",
+      desc: "Girl Scout Cookies — sold out momentanément."
     }
   ];
 
@@ -847,7 +845,6 @@
     const container = document.getElementById('cart-content');
     const items     = Object.values(cart);
 
-    // Affiche ou cache le toggle Nantes
     document.getElementById('nantes-wrap').style.display =
       items.length > 0 ? 'block' : 'none';
 
@@ -937,7 +934,7 @@
           <div class="product-cat">• ${p.category}</div>
           <div class="product-footer">
             <span class="product-price">${p.price.toFixed(2)} €</span>
-            <span class="product-stock">🌿 ${p.stock}</span>
+            <span class="product-stock">📦 ${p.stock}</span>
           </div>
         </div>
       </div>`).join('');
@@ -962,14 +959,13 @@
     document.getElementById('modal-img-wrap').innerHTML = `
       <span style="font-size:5rem">${currentProduct.emoji}</span>
       <div class="modal-thc-tag">${currentProduct.thc}</div>
-      <div class="modal-legal-tag">✅ Légal UE</div>`;
+      <div class="modal-legal-tag">✅ Top qualité</div>`;
     document.getElementById('modal-id').innerHTML      = `🏷 ${currentProduct.id}`;
     document.getElementById('modal-name').textContent  = currentProduct.name;
     document.getElementById('modal-cat').textContent   = `${currentProduct.brand} · ${currentProduct.category}`;
-    document.getElementById('modal-desc').textContent  = currentProduct.desc;
-    document.getElementById('modal-legal').textContent = currentProduct.legal;
+    document.getElementById('modal-desc').textContent  = currentProduct.desc || '';
     document.getElementById('modal-price').textContent = `${currentProduct.price.toFixed(2)} €`;
-    document.getElementById('modal-stock').innerHTML   = `🌿 ${currentProduct.stock} en stock`;
+    document.getElementById('modal-stock').innerHTML   = `📦 ${currentProduct.stock} en stock`;
     document.getElementById('qty-display').textContent = '1';
     document.getElementById('modal').classList.add('active');
     tg.HapticFeedback.impactOccurred('light');
