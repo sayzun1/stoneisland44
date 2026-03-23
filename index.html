@@ -159,18 +159,15 @@
       overflow: hidden;
     }
 
-    /* Photo produit sur la carte */
     .product-img-wrapper img.product-photo {
       width: 100%; height: 100%;
       object-fit: cover; display: block;
     }
 
-    /* Fallback emoji si pas de photo */
     .product-emoji-fallback {
-      display: none;
-      width: 100%; height: 100%;
+      display: none; width: 100%; height: 100%;
       align-items: center; justify-content: center;
-      font-size: 3.2rem;
+      font-size: 3.2rem; position: absolute; inset: 0;
     }
 
     .out-of-stock-badge {
@@ -201,7 +198,6 @@
 
     .product-stock { font-size: 0.67rem; color: var(--muted); }
 
-    /* ===== BOUTON DETAIL ===== */
     .btn-detail {
       width: 100%;
       background: linear-gradient(135deg, #1a7a6a, #2ab8a0);
@@ -238,7 +234,6 @@
       border-radius: 2px; margin: 0 auto 18px;
     }
 
-    /* Wrapper media modal (photo ou vidéo) */
     .modal-img-wrap {
       width: 100%; aspect-ratio: 16/9; border-radius: 12px;
       overflow: hidden; background: linear-gradient(135deg, #0d2030, #091520);
@@ -252,10 +247,7 @@
       object-fit: cover; border-radius: 12px;
     }
 
-    /* Fallback emoji dans modal */
-    .modal-emoji-fallback {
-      font-size: 5rem;
-    }
+    .modal-emoji-fallback { font-size: 5rem; }
 
     .modal-thc-tag {
       position: absolute; top: 10px; left: 10px;
@@ -429,8 +421,8 @@
     .cart-item-emoji {
       font-size: 2rem; width: 50px; height: 50px;
       background: var(--bg-card2); border-radius: 10px;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; overflow: hidden;
     }
 
     .cart-item-emoji img {
@@ -499,6 +491,74 @@
       color: var(--muted); border-radius: 25px;
       padding: 11px; font-size: 0.84rem; cursor: pointer;
     }
+
+    /* ===== PAGE INFO ===== */
+    .info-wrap { padding: 0 14px 20px; }
+
+    .info-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 16px; margin-bottom: 14px;
+    }
+
+    .info-card-présentation {
+      border-color: var(--teal-dark);
+      background: linear-gradient(135deg, #0d2030, #0a1e18);
+    }
+
+    .info-card-header {
+      font-size: 1rem; font-weight: 800;
+      color: var(--teal-light); margin-bottom: 10px;
+    }
+
+    .info-text {
+      font-size: 0.8rem; color: var(--muted); line-height: 1.7;
+    }
+
+    .info-text strong { color: var(--text); }
+
+    /* Horaires */
+    .info-schedule { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+
+    .schedule-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 10px; background: var(--bg);
+      border-radius: 10px; border: 1px solid var(--border);
+    }
+
+    .schedule-day { font-size: 0.8rem; color: var(--text); font-weight: 600; }
+
+    .schedule-time {
+      font-size: 0.78rem; font-weight: 800;
+      padding: 3px 10px; border-radius: 20px;
+    }
+
+    .schedule-time.open   { background: rgba(42,184,160,0.2); color: var(--teal-light); }
+    .schedule-time.closed { background: rgba(180,60,60,0.2);  color: #e07070; }
+
+    .info-status {
+      text-align: center; font-size: 0.78rem; font-weight: 700;
+      padding: 8px; border-radius: 10px; margin-top: 4px;
+    }
+
+    .info-status.is-open   { background: rgba(42,184,160,0.12); color: var(--teal-light); }
+    .info-status.is-closed { background: rgba(180,60,60,0.12);  color: #e07070; }
+
+    /* Avis */
+    .review-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 12px; margin-bottom: 10px;
+    }
+
+    .review-card:last-child { margin-bottom: 0; }
+
+    .review-top {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 6px;
+    }
+
+    .review-name  { font-size: 0.8rem; font-weight: 700; color: var(--text); }
+    .review-stars { font-size: 0.78rem; color: var(--gold); letter-spacing: 1px; }
+    .review-text  { font-size: 0.74rem; color: var(--muted); line-height: 1.55; }
 
     /* ===== CONTACT ===== */
     .contact-wrap { padding: 0 14px; }
@@ -638,7 +698,6 @@
     <div class="cart-header">
       <div class="section-title" style="padding:0;">🛒 Mon Panier</div>
     </div>
-
     <div class="nantes-toggle-wrap" id="nantes-wrap" style="display:none;">
       <div class="nantes-toggle-card" id="nantes-card" onclick="toggleNantes()">
         <div>
@@ -650,18 +709,90 @@
         </div>
       </div>
     </div>
-
     <div id="cart-content"></div>
+  </div>
+
+  <!-- ===== PAGE INFO ===== -->
+  <div id="page-info" class="page">
+    <div class="section-title">Infos</div>
+    <div class="info-wrap">
+
+      <!-- Présentation -->
+      <div class="info-card info-card-présentation">
+        <div class="info-card-header">🏝️ Stone Island 44</div>
+        <p class="info-text">
+          Bienvenue sur <strong>Stone Island 44</strong>, ta boutique de confiance dans tout le 44.
+          On propose des produits de qualité, testés et sélectionnés avec soin.
+          Commande rapide, livraison discrète, service sérieux — on est là pour toi.
+        </p>
+      </div>
+
+      <!-- Horaires -->
+      <div class="info-card">
+        <div class="info-card-header">🕐 Horaires</div>
+        <div class="info-schedule">
+          <div class="schedule-row">
+            <span class="schedule-day">Lundi – Vendredi</span>
+            <span class="schedule-time open">10h → 22h</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-day">Samedi</span>
+            <span class="schedule-time open">12h → 23h</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-day">Dimanche</span>
+            <span class="schedule-time closed">Fermé</span>
+          </div>
+        </div>
+        <div class="info-status" id="open-status"></div>
+      </div>
+
+      <!-- Avis clients -->
+      <div class="info-card">
+        <div class="info-card-header">⭐ Retours clients</div>
+
+        <div class="review-card">
+          <div class="review-top">
+            <span class="review-name">Kévin M.</span>
+            <span class="review-stars">★★★★★</span>
+          </div>
+          <p class="review-text">"Qualité au rendez-vous, livraison rapide sur Nantes. Je recommande à 100% 🔥"</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-top">
+            <span class="review-name">Lucas T.</span>
+            <span class="review-stars">★★★★★</span>
+          </div>
+          <p class="review-text">"La résine hash est incroyable, meilleure que tout ce que j'ai eu avant. Client fidèle depuis le début 💪"</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-top">
+            <span class="review-name">Mathis R.</span>
+            <span class="review-stars">★★★★☆</span>
+          </div>
+          <p class="review-text">"Commande reçue en 2h sur Nantes, emballage discret nickel. Le SAV est réactif, top service."</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-top">
+            <span class="review-name">Jordan B.</span>
+            <span class="review-stars">★★★★★</span>
+          </div>
+          <p class="review-text">"Pack fidélité imbattable comme prix. Je passe par ici depuis 3 mois, jamais déçu 🏝️"</p>
+        </div>
+
+      </div>
+    </div>
   </div>
 
   <!-- ===== PAGE CONTACT ===== -->
   <div id="page-contact" class="page">
     <div class="section-title">Contact</div>
-
     <div class="legal-banner">
       🌿 Tous nos produits sont de qualité et testés.
     </div>
-
     <div class="contact-wrap">
 
       <div class="contact-card">
@@ -753,6 +884,10 @@
       Panier
       <div class="nav-cart-badge" id="nav-cart-badge">0</div>
     </button>
+    <button class="nav-btn" id="nav-info" onclick="showPage('info')">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      Infos
+    </button>
     <button class="nav-btn" id="nav-contact" onclick="showPage('contact')">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
       Contact
@@ -765,9 +900,9 @@
   tg.expand();
 
   // =========================================================
-  // PRODUITS — modifie img et video avec tes vrais fichiers
-  // img:   "photos/nom.jpg"   (obligatoire, sinon emoji affiché)
-  // video: "videos/nom.mp4"   (optionnel, null si pas de vidéo)
+  // PRODUITS
+  // img:   "photos/nom.jpg"
+  // video: "videos/nom.mp4" ou null
   // =========================================================
   const PRODUCTS = [
     {
@@ -775,8 +910,7 @@
       name: "Résine Hash",
       category: "SHIT", brand: "Island Extracts",
       stock: 25, emoji: "🟤", thc: "15% THC",
-      img:   "photos/hash.jpg",
-      video: "videos/hash.mp4",
+      img: "photos/hash.jpg", video: "videos/hash.mp4",
       desc: "Résine premium, texture souple. Arômes terreux et boisés. Qualité testée.",
       grammes: [
         { label: "1g",  price: 12 },
@@ -791,8 +925,7 @@
       name: "Résine Blonde",
       category: "SHIT", brand: "Island Extracts",
       stock: 18, emoji: "🟡", thc: "20% THC",
-      img:   "photos/blonde.jpg",
-      video: "videos/blonde.mp4",
+      img: "photos/blonde.jpg", video: "videos/blonde.mp4",
       desc: "Résine blonde pressée à froid. Effet puissant, qualité premium.",
       grammes: [
         { label: "1g",  price: 13 },
@@ -807,8 +940,7 @@
       name: "Résine Ice",
       category: "SHIT", brand: "Island Extracts",
       stock: 14, emoji: "⚪", thc: "25% THC",
-      img:   "photos/ice.jpg",
-      video: "videos/ice.mp4",
+      img: "photos/ice.jpg", video: "videos/ice.mp4",
       desc: "Ice-o-lator full spectrum. Texture granuleuse, arômes floraux intenses.",
       grammes: [
         { label: "1g",  price: 15 },
@@ -823,8 +955,7 @@
       name: "Beuh Premium",
       category: "BEUH", brand: "CoralCBD",
       stock: 30, emoji: "🥦", thc: "20% THC",
-      img:   "photos/beuh_premium.jpg",
-      video: "videos/beuh_premium.mp4",
+      img: "photos/beuh_premium.jpg", video: "videos/beuh_premium.mp4",
       desc: "Beuh indoor qualité top. Arômes fruités, effet puissant.",
       grammes: [
         { label: "1g",  price: 12 },
@@ -839,8 +970,7 @@
       name: "Beuh OG Kush",
       category: "BEUH", brand: "CoralCBD",
       stock: 20, emoji: "🌿", thc: "22% THC",
-      img:   "photos/ogkush.jpg",
-      video: "videos/ogkush.mp4",
+      img: "photos/ogkush.jpg", video: "videos/ogkush.mp4",
       desc: "OG Kush indoor. Arômes boisés et épicés, effet long.",
       grammes: [
         { label: "1g",  price: 13 },
@@ -855,8 +985,7 @@
       name: "Beuh Haze",
       category: "BEUH", brand: "TropicalZen",
       stock: 25, emoji: "💚", thc: "18% THC",
-      img:   "photos/haze.jpg",
-      video: "videos/haze.mp4",
+      img: "photos/haze.jpg", video: "videos/haze.mp4",
       desc: "Haze indoor arômes tropical et fruité. Idéal pour la journée.",
       grammes: [
         { label: "1g",  price: 11 },
@@ -871,8 +1000,7 @@
       name: "Beuh Cookies",
       category: "BEUH", brand: "Island Extracts",
       stock: 0, emoji: "🍪", thc: "24% THC",
-      img:   "photos/cookies.jpg",
-      video: null,
+      img: "photos/cookies.jpg", video: null,
       desc: "Girl Scout Cookies — sold out momentanément.",
       grammes: [
         { label: "1g",  price: 14 },
@@ -887,8 +1015,7 @@
       name: "Pack Découverte",
       category: "PROMO", brand: "Island Extracts",
       stock: 15, emoji: "🎁", thc: "—",
-      img:   "photos/pack_decouverte.jpg",
-      video: "videos/pack_decouverte.mp4",
+      img: "photos/pack_decouverte.jpg", video: "videos/pack_decouverte.mp4",
       desc: "2g Shit + 2g Beuh au meilleur prix. Idéal pour tester.",
       grammes: [
         { label: "Pack S", price: 30 },
@@ -901,8 +1028,7 @@
       name: "Pack Fidélité",
       category: "PROMO", brand: "TropicalZen",
       stock: 10, emoji: "⭐", thc: "—",
-      img:   "photos/pack_fidelite.jpg",
-      video: null,
+      img: "photos/pack_fidelite.jpg", video: null,
       desc: "5g au choix Shit ou Beuh — prix dégressif fidélité client.",
       grammes: [
         { label: "5g",  price: 55 },
@@ -1012,7 +1138,6 @@
       return;
     }
 
-    // Miniature panier : photo si dispo, sinon emoji
     function cartThumb(item) {
       if (item.product.img) {
         return `<img src="${item.product.img}" alt=""
@@ -1087,7 +1212,6 @@
     }
 
     grid.innerHTML = products.map(p => {
-      // Photo ou fallback emoji
       const imgHTML = p.img
         ? `<img class="product-photo" src="${p.img}" alt="${p.name}"
                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
@@ -1131,7 +1255,6 @@
     currentQty     = 1;
     currentGramIdx = 0;
 
-    // Vidéo si dispo, sinon photo, sinon emoji
     let mediaHTML;
     if (currentProduct.video) {
       mediaHTML = `
@@ -1149,8 +1272,7 @@
     }
 
     const grammesHTML = currentProduct.grammes.map((g, i) => `
-      <button class="gram-btn ${i === 0 ? 'active' : ''}"
-              onclick="selectGram(${i})">
+      <button class="gram-btn ${i === 0 ? 'active' : ''}" onclick="selectGram(${i})">
         <span class="gram-label">${g.label}</span>
         <span class="gram-price">${g.price} €</span>
       </button>`).join('');
@@ -1201,7 +1323,6 @@
   }
 
   function closeModal() {
-    // Stop la vidéo quand on ferme
     const video = document.querySelector('#modal-img-wrap video');
     if (video) { video.pause(); video.currentTime = 0; }
     document.getElementById('modal').classList.remove('active');
@@ -1237,6 +1358,27 @@
     toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
   }
 
+  // ===== STATUT OUVERTURE =====
+  function updateOpenStatus() {
+    const now  = new Date();
+    const day  = now.getDay();
+    const time = now.getHours() + now.getMinutes() / 60;
+
+    let isOpen = false;
+    if      (day >= 1 && day <= 5) isOpen = time >= 10 && time < 22;
+    else if (day === 6)            isOpen = time >= 12 && time < 23;
+
+    const el = document.getElementById('open-status');
+    if (!el) return;
+    if (isOpen) {
+      el.textContent = '🟢 Ouvert maintenant — on répond vite !';
+      el.className   = 'info-status is-open';
+    } else {
+      el.textContent = '🔴 Fermé pour l\'instant — commande possible, réponse dès la réouverture.';
+      el.className   = 'info-status is-closed';
+    }
+  }
+
   // ===== NAV =====
   function showPage(name) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1244,10 +1386,13 @@
     document.getElementById('page-' + name).classList.add('active');
     document.getElementById('nav-' + name).classList.add('active');
     if (name === 'cart') renderCart();
+    if (name === 'info') updateOpenStatus();
   }
 
   // ===== INIT =====
   renderProducts(PRODUCTS);
+  updateOpenStatus();
+  setInterval(updateOpenStatus, 60000);
 </script>
 </body>
 </html>
