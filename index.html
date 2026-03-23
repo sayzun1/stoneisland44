@@ -48,9 +48,17 @@
 
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(7,17,26,0.05) 0%, rgba(7,17,26,0.15) 40%, rgba(7,17,26,0.92) 100%);
+      background: linear-gradient(
+        to bottom,
+        rgba(7,17,26,0.75) 0%,
+        rgba(7,17,26,0.10) 40%,
+        rgba(7,17,26,0.00) 100%
+      );
       display: flex; flex-direction: column;
-      justify-content: flex-end; padding: 14px 16px;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 18px 16px;
+      text-align: center;
     }
 
     .hero-title {
@@ -159,12 +167,6 @@
       font-size: 0.58rem; padding: 3px 7px; border-radius: 8px; font-weight: 700;
     }
 
-    .thc-badge {
-      position: absolute; top: 7px; left: 7px;
-      background: rgba(42,184,160,0.88); color: #07111a;
-      font-size: 0.55rem; padding: 2px 7px; border-radius: 8px; font-weight: 800;
-    }
-
     .product-info { padding: 9px 10px 11px; }
 
     .product-name {
@@ -260,7 +262,7 @@
 
     .modal-stock-info { font-size: 0.76rem; color: var(--muted); margin-bottom: 14px; }
 
-    /* ===== SÉLECTEUR GRAMMES ===== */
+    /* ===== GRAMMES ===== */
     .gram-title {
       font-size: 0.82rem; font-weight: 700;
       color: var(--text); margin-bottom: 10px;
@@ -287,21 +289,14 @@
       box-shadow: 0 0 12px rgba(42,184,160,0.25);
     }
 
-    .gram-label {
-      font-size: 0.82rem; font-weight: 700; color: var(--text);
-    }
-
-    .gram-price {
-      font-size: 0.8rem; font-weight: 800; color: var(--gold);
-    }
-
+    .gram-label { font-size: 0.82rem; font-weight: 700; color: var(--text); }
+    .gram-price { font-size: 0.8rem; font-weight: 800; color: var(--gold); }
     .gram-btn.active .gram-label { color: var(--teal-light); }
 
     .gram-total {
-      text-align: center; font-size: 0.95rem;
-      color: var(--muted); margin-bottom: 16px;
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 10px;
+      text-align: center; font-size: 0.95rem; color: var(--muted);
+      margin-bottom: 16px; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: 12px; padding: 10px;
     }
 
     .gram-total strong { color: var(--gold); font-size: 1.3rem; }
@@ -699,11 +694,7 @@
       <div class="modal-cat"        id="modal-cat"></div>
       <div class="modal-desc"       id="modal-desc"></div>
       <div class="modal-stock-info" id="modal-stock"></div>
-
-      <!-- SÉLECTEUR GRAMMES -->
       <div id="modal-gram-section"></div>
-
-      <!-- QUANTITÉ -->
       <div class="qty-row">
         <span class="qty-label">Quantité :</span>
         <div class="qty-control">
@@ -712,7 +703,6 @@
           <button class="qty-btn" onclick="changeQty(1)">+</button>
         </div>
       </div>
-
       <button class="btn-add-cart" onclick="addToCart()">🛒 Ajouter au panier</button>
       <button class="btn-close"    onclick="closeModal()">Fermer</button>
     </div>
@@ -743,7 +733,7 @@
   tg.ready();
   tg.expand();
 
-  // ===== PRODUITS — modifie ici tes vrais produits & prix =====
+  // ===== PRODUITS =====
   const PRODUCTS = [
     {
       id: "si44-001-a1b2c3d4e5",
@@ -869,13 +859,14 @@
     }
   ];
 
-  // ===== PANIER =====
-  let cart         = {};
-  let isNantes     = false;
-  let currentProduct = null;
-  let currentQty     = 1;
-  let currentGramIdx = 0;
+  // ===== STATE =====
+  let cart          = {};
+  let isNantes      = false;
+  let currentProduct  = null;
+  let currentQty      = 1;
+  let currentGramIdx  = 0;
 
+  // ===== BADGES =====
   function getCartTotal() {
     return Object.values(cart).reduce((s, i) => s + i.product.price * i.qty, 0);
   }
@@ -894,6 +885,7 @@
     });
   }
 
+  // ===== NANTES =====
   function toggleNantes() {
     isNantes = !isNantes;
     document.getElementById('nantes-card').classList.toggle('on', isNantes);
@@ -902,6 +894,7 @@
     renderCart();
   }
 
+  // ===== PANIER =====
   function addToCart() {
     if (!currentProduct) return;
     const gram = currentProduct.grammes[currentGramIdx];
@@ -1032,7 +1025,6 @@
       <div class="product-card ${p.stock === 0 ? 'out-of-stock' : ''}">
         <div class="product-img-wrapper">
           <div class="product-emoji">${p.emoji}</div>
-          <div class="thc-badge">${p.thc}</div>
           ${p.stock === 0 ? '<div class="out-of-stock-badge">ÉPUISÉ</div>' : ''}
         </div>
         <div class="product-info">
@@ -1159,4 +1151,3 @@
 </script>
 </body>
 </html>
-
