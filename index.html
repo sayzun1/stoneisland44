@@ -17,7 +17,6 @@
       --teal-light:   #4dd9c0;
       --teal-dark:    #1a7a6a;
       --gold:         #e8b84b;
-      --gold-dark:    #b8882b;
       --sand:         #f0e0c0;
       --text:         #eef4f0;
       --muted:        #6a9080;
@@ -38,97 +37,60 @@
     .page { display: none; }
     .page.active { display: block; }
 
-    /* ===== HERO BANNER ===== */
-    .hero {
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-    }
+    /* ===== HERO ===== */
+    .hero { width: 100%; position: relative; overflow: hidden; }
 
     .hero img {
-      width: 100%;
-      display: block;
-      height: 260px;
-      object-fit: cover;
+      width: 100%; display: block;
+      height: 260px; object-fit: cover;
       object-position: center 60%;
     }
 
     .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(7,17,26,0.05) 0%,
-        rgba(7,17,26,0.15) 40%,
-        rgba(7,17,26,0.92) 100%
-      );
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 14px 16px;
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(7,17,26,0.05) 0%, rgba(7,17,26,0.15) 40%, rgba(7,17,26,0.92) 100%);
+      display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 14px 16px;
     }
 
     .hero-title {
-      font-size: 1.6rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-      color: #fff;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
-      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.6rem; font-weight: 900; letter-spacing: 1px;
+      color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+      font-family: Georgia, serif;
     }
 
     .hero-sub {
-      font-size: 0.65rem;
-      letter-spacing: 3px;
-      color: var(--teal-light);
-      text-transform: uppercase;
-      margin-top: 3px;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+      font-size: 0.65rem; letter-spacing: 3px;
+      color: var(--teal-light); text-transform: uppercase;
+      margin-top: 3px; text-shadow: 0 1px 6px rgba(0,0,0,0.8);
     }
 
-    /* ===== HEADER CART ===== */
-    .header-cart {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-    }
+    .header-cart { position: absolute; top: 12px; right: 12px; }
 
     .cart-icon-btn {
-      background: rgba(7,17,26,0.65);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(42,184,160,0.4);
-      border-radius: 50%;
+      background: rgba(7,17,26,0.65); backdrop-filter: blur(6px);
+      border: 1px solid rgba(42,184,160,0.4); border-radius: 50%;
       width: 42px; height: 42px;
       display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      position: relative;
+      cursor: pointer; position: relative;
     }
 
     .cart-icon-btn svg { width: 20px; height: 20px; fill: var(--sand); }
 
     .cart-badge {
-      position: absolute;
-      top: -4px; right: -4px;
-      background: var(--gold);
-      color: #07111a;
-      font-size: 0.58rem;
-      font-weight: 900;
-      width: 17px; height: 17px;
-      border-radius: 50%;
-      display: none;
-      align-items: center; justify-content: center;
+      position: absolute; top: -4px; right: -4px;
+      background: var(--gold); color: #07111a;
+      font-size: 0.58rem; font-weight: 900;
+      width: 17px; height: 17px; border-radius: 50%;
+      display: none; align-items: center; justify-content: center;
     }
 
     .cart-badge.visible { display: flex; }
 
-    /* ===== SECTION TITRE ===== */
+    /* ===== TITRES ===== */
     .section-title {
-      text-align: center;
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: var(--teal-light);
-      text-shadow: var(--glow);
-      padding: 12px 0 6px;
+      text-align: center; font-size: 1.45rem; font-weight: 700;
+      color: var(--teal-light); text-shadow: var(--glow); padding: 12px 0 6px;
     }
 
     /* ===== FILTRES ===== */
@@ -136,30 +98,22 @@
 
     .filters-label {
       display: flex; align-items: center; gap: 6px;
-      font-size: 0.78rem; color: var(--muted);
-      margin-bottom: 8px;
+      font-size: 0.78rem; color: var(--muted); margin-bottom: 8px;
     }
 
     .filters-row { display: flex; gap: 10px; }
 
     .filter-select {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      border-radius: 25px;
-      padding: 8px 32px 8px 14px;
-      font-size: 0.8rem; flex: 1;
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text); border-radius: 25px;
+      padding: 8px 32px 8px 14px; font-size: 0.8rem; flex: 1;
       appearance: none; -webkit-appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%232ab8a0'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 10px center;
+      background-repeat: no-repeat; background-position: right 10px center;
       cursor: pointer; transition: border-color 0.2s;
     }
 
-    .filter-select:focus {
-      outline: none; border-color: var(--teal);
-      box-shadow: var(--glow);
-    }
+    .filter-select:focus { outline: none; border-color: var(--teal); box-shadow: var(--glow); }
 
     /* ===== RÉSULTATS ===== */
     .results-bar {
@@ -171,25 +125,21 @@
 
     .results-count {
       font-size: 0.74rem; color: var(--text);
-      background: var(--tag-bg);
-      border: 1px solid var(--teal-dark);
+      background: var(--tag-bg); border: 1px solid var(--teal-dark);
       padding: 3px 10px; border-radius: 12px;
     }
 
     /* ===== GRILLE ===== */
     .products-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: grid; grid-template-columns: repeat(2, 1fr);
       gap: 12px; padding: 0 12px;
     }
 
     /* ===== CARTE ===== */
     .product-card {
-      background: var(--bg-card);
-      border-radius: 16px; overflow: hidden;
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
+      background: var(--bg-card); border-radius: 16px;
+      overflow: hidden; border: 1px solid var(--border);
+      cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
     }
 
     .product-card:active { transform: scale(0.97); }
@@ -199,8 +149,7 @@
     .product-img-wrapper {
       position: relative; aspect-ratio: 4/3;
       background: linear-gradient(135deg, #0d2030, #091520);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
     }
 
     .product-emoji { font-size: 3.2rem; }
@@ -208,26 +157,22 @@
     .product-id-badge {
       position: absolute; bottom: 6px; left: 50%;
       transform: translateX(-50%);
-      background: rgba(6,15,24,0.78);
-      backdrop-filter: blur(4px);
+      background: rgba(6,15,24,0.78); backdrop-filter: blur(4px);
       border-radius: 20px; padding: 3px 9px;
       font-size: 0.5rem; color: var(--teal-light);
-      white-space: nowrap; max-width: 92%;
-      overflow: hidden; text-overflow: ellipsis;
+      white-space: nowrap; max-width: 92%; overflow: hidden; text-overflow: ellipsis;
     }
 
     .out-of-stock-badge {
       position: absolute; top: 7px; right: 7px;
-      background: rgba(120,40,40,0.9);
-      color: #fff; font-size: 0.58rem;
-      padding: 3px 7px; border-radius: 8px; font-weight: 700;
+      background: rgba(120,40,40,0.9); color: #fff;
+      font-size: 0.58rem; padding: 3px 7px; border-radius: 8px; font-weight: 700;
     }
 
     .thc-badge {
       position: absolute; top: 7px; left: 7px;
-      background: rgba(42,184,160,0.88);
-      color: #07111a; font-size: 0.55rem;
-      padding: 2px 7px; border-radius: 8px; font-weight: 800;
+      background: rgba(42,184,160,0.88); color: #07111a;
+      font-size: 0.55rem; padding: 2px 7px; border-radius: 8px; font-weight: 800;
     }
 
     .product-info { padding: 9px 10px 11px; }
@@ -238,39 +183,30 @@
       text-overflow: ellipsis; margin-bottom: 3px;
     }
 
-    .product-cat {
-      font-size: 0.67rem; color: var(--teal-light); margin-bottom: 7px;
-    }
+    .product-cat { font-size: 0.67rem; color: var(--teal-light); margin-bottom: 7px; }
 
-    .product-footer {
-      display: flex; justify-content: space-between; align-items: center;
-    }
+    .product-footer { display: flex; justify-content: space-between; align-items: center; }
 
     .product-price {
       font-weight: 800; font-size: 0.9rem;
       color: var(--gold); text-shadow: var(--glow-gold);
     }
 
-    .product-stock {
-      font-size: 0.67rem; color: var(--muted);
-    }
+    .product-stock { font-size: 0.67rem; color: var(--muted); }
 
     /* ===== MODAL ===== */
     .modal-overlay {
       display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.78); z-index: 100;
-      align-items: flex-end;
+      background: rgba(0,0,0,0.78); z-index: 100; align-items: flex-end;
     }
 
     .modal-overlay.active { display: flex; }
 
     .modal {
-      background: var(--bg-card2);
-      border-radius: 22px 22px 0 0;
+      background: var(--bg-card2); border-radius: 22px 22px 0 0;
       padding: 20px 18px 34px; width: 100%;
       max-height: 90vh; overflow-y: auto;
-      border-top: 1px solid var(--border);
-      animation: slideUp 0.22s ease;
+      border-top: 1px solid var(--border); animation: slideUp 0.22s ease;
     }
 
     @keyframes slideUp {
@@ -279,51 +215,38 @@
     }
 
     .modal-handle {
-      width: 36px; height: 4px;
-      background: var(--border);
+      width: 36px; height: 4px; background: var(--border);
       border-radius: 2px; margin: 0 auto 18px;
     }
 
     .modal-img-wrap {
-      width: 100%; aspect-ratio: 16/9;
-      border-radius: 12px; overflow: hidden;
-      background: linear-gradient(135deg, #0d2030, #091520);
+      width: 100%; aspect-ratio: 16/9; border-radius: 12px;
+      overflow: hidden; background: linear-gradient(135deg, #0d2030, #091520);
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 14px; font-size: 5rem;
-      position: relative;
+      margin-bottom: 14px; font-size: 5rem; position: relative;
     }
 
     .modal-thc-tag {
       position: absolute; top: 10px; left: 10px;
-      background: var(--teal);
-      color: #07111a; font-size: 0.7rem;
-      padding: 4px 10px; border-radius: 10px; font-weight: 800;
+      background: var(--teal); color: #07111a;
+      font-size: 0.7rem; padding: 4px 10px; border-radius: 10px; font-weight: 800;
     }
 
     .modal-legal-tag {
       position: absolute; top: 10px; right: 10px;
-      background: rgba(232,184,75,0.92);
-      color: #07111a; font-size: 0.62rem;
-      padding: 4px 10px; border-radius: 10px; font-weight: 700;
+      background: rgba(232,184,75,0.92); color: #07111a;
+      font-size: 0.62rem; padding: 4px 10px; border-radius: 10px; font-weight: 700;
     }
 
     .modal-id {
-      background: var(--tag-bg);
-      border: 1px solid var(--teal-dark);
+      background: var(--tag-bg); border: 1px solid var(--teal-dark);
       border-radius: 20px; padding: 4px 12px;
       font-size: 0.6rem; color: var(--teal-light);
-      display: inline-block; margin-bottom: 10px;
-      word-break: break-all;
+      display: inline-block; margin-bottom: 10px; word-break: break-all;
     }
 
-    .modal-name {
-      font-size: 1.2rem; font-weight: 800;
-      color: var(--text); margin-bottom: 3px;
-    }
-
-    .modal-cat {
-      font-size: 0.78rem; color: var(--teal-light); margin-bottom: 6px;
-    }
+    .modal-name { font-size: 1.2rem; font-weight: 800; color: var(--text); margin-bottom: 3px; }
+    .modal-cat  { font-size: 0.78rem; color: var(--teal-light); margin-bottom: 6px; }
 
     .modal-desc {
       font-size: 0.76rem; color: var(--muted);
@@ -331,28 +254,19 @@
     }
 
     .modal-legal-notice {
-      background: rgba(232,184,75,0.1);
-      border: 1px solid rgba(232,184,75,0.3);
+      background: rgba(232,184,75,0.1); border: 1px solid rgba(232,184,75,0.3);
       border-radius: 10px; padding: 8px 12px;
-      font-size: 0.68rem; color: #c8a84a;
-      margin-bottom: 14px; line-height: 1.4;
+      font-size: 0.68rem; color: #c8a84a; margin-bottom: 14px; line-height: 1.4;
     }
 
     .modal-price {
       font-size: 1.4rem; font-weight: 900;
-      color: var(--gold); text-shadow: var(--glow-gold);
-      margin-bottom: 6px;
+      color: var(--gold); text-shadow: var(--glow-gold); margin-bottom: 6px;
     }
 
-    .modal-stock-info {
-      font-size: 0.76rem; color: var(--muted); margin-bottom: 18px;
-    }
+    .modal-stock-info { font-size: 0.76rem; color: var(--muted); margin-bottom: 18px; }
 
-    .qty-row {
-      display: flex; align-items: center;
-      gap: 14px; margin-bottom: 16px;
-    }
-
+    .qty-row { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
     .qty-label { font-size: 0.85rem; color: var(--muted); }
 
     .qty-control {
@@ -362,61 +276,82 @@
     }
 
     .qty-btn {
-      background: none; border: none;
-      color: var(--teal-light); font-size: 1.2rem;
-      width: 36px; height: 36px; cursor: pointer;
+      background: none; border: none; color: var(--teal-light);
+      font-size: 1.2rem; width: 36px; height: 36px; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
     }
 
     .qty-btn:active { background: var(--bg-card); }
-
-    .qty-value {
-      min-width: 32px; text-align: center;
-      font-weight: 700; font-size: 1rem;
-    }
+    .qty-value { min-width: 32px; text-align: center; font-weight: 700; font-size: 1rem; }
 
     .btn-add-cart {
-      width: 100%;
-      background: linear-gradient(135deg, #1a7a6a, #2ab8a0);
-      color: #07111a; border: none;
-      border-radius: 25px; padding: 14px;
-      font-size: 0.95rem; font-weight: 800;
-      cursor: pointer; margin-bottom: 10px;
-      box-shadow: 0 4px 16px rgba(42,184,160,0.3);
-      transition: opacity 0.2s;
+      width: 100%; background: linear-gradient(135deg, #1a7a6a, #2ab8a0);
+      color: #07111a; border: none; border-radius: 25px; padding: 14px;
+      font-size: 0.95rem; font-weight: 800; cursor: pointer; margin-bottom: 10px;
+      box-shadow: 0 4px 16px rgba(42,184,160,0.3); transition: opacity 0.2s;
     }
 
     .btn-add-cart:active { opacity: 0.85; }
 
     .btn-close {
-      width: 100%; background: transparent;
-      color: var(--muted); border: 1px solid var(--border);
-      border-radius: 25px; padding: 11px;
-      font-size: 0.88rem; cursor: pointer;
+      width: 100%; background: transparent; color: var(--muted);
+      border: 1px solid var(--border); border-radius: 25px;
+      padding: 11px; font-size: 0.88rem; cursor: pointer;
     }
 
     /* ===== TOAST ===== */
     .toast {
       position: fixed; top: 20px; left: 50%;
       transform: translateX(-50%) translateY(-80px);
-      background: var(--bg-card2);
-      border: 1px solid var(--teal);
-      color: var(--teal-light);
-      padding: 10px 20px; border-radius: 25px;
-      font-size: 0.8rem; font-weight: 600;
-      z-index: 200; transition: transform 0.3s ease;
-      white-space: nowrap; box-shadow: var(--glow);
+      background: var(--bg-card2); border: 1px solid var(--teal);
+      color: var(--teal-light); padding: 10px 20px; border-radius: 25px;
+      font-size: 0.8rem; font-weight: 600; z-index: 200;
+      transition: transform 0.3s ease; white-space: nowrap; box-shadow: var(--glow);
     }
 
     .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast.toast-snap { border-color: #FFFC00 !important; color: #FFFC00 !important; }
 
     /* ===== PANIER ===== */
     .cart-header { padding: 16px 16px 4px; }
 
-    .cart-empty {
-      text-align: center; padding: 50px 20px; color: var(--muted);
+    /* Toggle Nantes */
+    .nantes-toggle-wrap { padding: 0 12px 10px; }
+
+    .nantes-toggle-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 14px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
     }
 
+    .nantes-toggle-card:active { background: var(--bg-card2); }
+
+    .nantes-toggle-card.on {
+      border-color: var(--teal);
+      background: rgba(42,184,160,0.08);
+    }
+
+    .nantes-toggle-label { font-weight: 700; font-size: 0.88rem; }
+    .nantes-toggle-sub   { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+
+    .nantes-switch {
+      width: 44px; height: 24px; background: var(--border);
+      border-radius: 12px; position: relative;
+      transition: background 0.2s; flex-shrink: 0;
+    }
+
+    .nantes-switch.on { background: var(--teal); }
+
+    .nantes-knob {
+      position: absolute; top: 3px; left: 3px;
+      width: 18px; height: 18px; background: #fff;
+      border-radius: 50%; transition: transform 0.2s;
+    }
+
+    .nantes-switch.on .nantes-knob { transform: translateX(20px); }
+
+    .cart-empty { text-align: center; padding: 50px 20px; color: var(--muted); }
     .cart-empty-icon { font-size: 3rem; margin-bottom: 14px; }
 
     .btn-explore {
@@ -431,15 +366,13 @@
     .cart-item {
       background: var(--bg-card); border: 1px solid var(--border);
       border-radius: 14px; padding: 12px;
-      display: flex; align-items: center; gap: 12px;
-      margin-bottom: 10px;
+      display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
     }
 
     .cart-item-emoji {
       font-size: 2rem; width: 50px; height: 50px;
       background: var(--bg-card2); border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
 
     .cart-item-info { flex: 1; min-width: 0; }
@@ -452,34 +385,25 @@
 
     .cart-item-price { font-size: 0.76rem; color: var(--gold); }
 
-    .cart-item-controls {
-      display: flex; align-items: center; gap: 4px;
-    }
+    .cart-item-controls { display: flex; align-items: center; gap: 4px; }
 
     .cart-qty-btn {
       background: var(--bg-card2); border: 1px solid var(--border);
-      color: var(--teal-light); width: 28px; height: 28px;
-      border-radius: 50%; font-size: 1rem;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; flex-shrink: 0;
+      color: var(--teal-light); width: 28px; height: 28px; border-radius: 50%;
+      font-size: 1rem; display: flex; align-items: center;
+      justify-content: center; cursor: pointer; flex-shrink: 0;
     }
 
-    .cart-qty {
-      font-size: 0.88rem; font-weight: 700;
-      min-width: 22px; text-align: center;
-    }
+    .cart-qty { font-size: 0.88rem; font-weight: 700; min-width: 22px; text-align: center; }
 
     .cart-remove-btn {
-      background: none; border: none;
-      color: #a05050; font-size: 1.1rem;
-      padding: 4px; cursor: pointer; margin-left: 4px;
+      background: none; border: none; color: #a05050;
+      font-size: 1.1rem; padding: 4px; cursor: pointer; margin-left: 4px;
     }
 
     .cart-summary {
-      margin: 14px 12px 0;
-      background: var(--bg-card2);
-      border: 1px solid var(--border);
-      border-radius: 16px; padding: 14px;
+      margin: 14px 12px 0; background: var(--bg-card2);
+      border: 1px solid var(--border); border-radius: 16px; padding: 14px;
     }
 
     .summary-row {
@@ -492,29 +416,23 @@
 
     .summary-total {
       display: flex; justify-content: space-between;
-      font-size: 1rem; font-weight: 800;
-      color: var(--text); padding: 10px 0 0;
+      font-size: 1rem; font-weight: 800; color: var(--text); padding: 10px 0 0;
     }
 
     .summary-total span:last-child { color: var(--gold); }
 
     .btn-checkout {
-      margin: 14px 12px 0;
-      width: calc(100% - 24px);
+      margin: 14px 12px 0; width: calc(100% - 24px);
       background: linear-gradient(135deg, #1a7a6a, #2ab8a0);
-      color: #07111a; border: none;
-      border-radius: 25px; padding: 15px;
-      font-size: 0.98rem; font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 4px 18px rgba(42,184,160,0.25);
-      transition: opacity 0.2s;
+      color: #07111a; border: none; border-radius: 25px; padding: 15px;
+      font-size: 0.98rem; font-weight: 800; cursor: pointer;
+      box-shadow: 0 4px 18px rgba(42,184,160,0.25); transition: opacity 0.2s;
     }
 
     .btn-checkout:active { opacity: 0.85; }
 
     .btn-clear-cart {
-      margin: 10px 12px 0;
-      width: calc(100% - 24px);
+      margin: 10px 12px 0; width: calc(100% - 24px);
       background: transparent; border: 1px solid var(--border);
       color: var(--muted); border-radius: 25px;
       padding: 11px; font-size: 0.84rem; cursor: pointer;
@@ -523,6 +441,12 @@
     /* ===== CONTACT ===== */
     .contact-wrap { padding: 0 14px; }
 
+    .legal-banner {
+      background: rgba(232,184,75,0.08); border: 1px solid rgba(232,184,75,0.25);
+      border-radius: 14px; padding: 14px; margin: 0 14px 14px;
+      font-size: 0.72rem; color: #c8a84a; line-height: 1.6; text-align: center;
+    }
+
     .contact-card {
       background: var(--bg-card); border: 1px solid var(--border);
       border-radius: 14px; padding: 16px; margin-bottom: 12px;
@@ -530,6 +454,7 @@
 
     .contact-card h3 {
       color: var(--teal-light); margin-bottom: 10px; font-size: 0.92rem;
+      display: flex; align-items: center; gap: 6px;
     }
 
     .contact-row {
@@ -540,31 +465,38 @@
 
     .contact-row:last-child { border-bottom: none; }
 
-    .legal-banner {
-      background: rgba(232,184,75,0.08);
-      border: 1px solid rgba(232,184,75,0.25);
-      border-radius: 14px; padding: 14px;
-      margin: 0 14px 14px;
-      font-size: 0.72rem; color: #c8a84a;
-      line-height: 1.6; text-align: center;
+    .contact-row-snap,
+    .contact-row-tg {
+      cursor: pointer; border-radius: 10px;
+      transition: background 0.15s; justify-content: space-between; padding: 10px 6px;
     }
+
+    .contact-row-snap:active,
+    .contact-row-tg:active { background: rgba(42,184,160,0.12); }
+
+    .snap-logo { font-size: 1.3rem; flex-shrink: 0; }
+    .tg-icon   { display: flex; align-items: center; flex-shrink: 0; }
+
+    .contact-handle {
+      flex: 1; font-weight: 700; font-size: 0.88rem;
+      color: var(--text); margin-left: 8px;
+    }
+
+    .copy-hint { font-size: 0.62rem; color: var(--muted); white-space: nowrap; }
 
     /* ===== NAV ===== */
     .bottom-nav {
       position: fixed; bottom: 0; left: 0; right: 0;
-      background: var(--bg-nav);
-      border-top: 1px solid var(--border);
+      background: var(--bg-nav); border-top: 1px solid var(--border);
       display: flex; z-index: 50;
     }
 
     .nav-btn {
       flex: 1; display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      gap: 3px; padding: 10px;
-      background: none; border: none;
+      gap: 3px; padding: 10px; background: none; border: none;
       color: var(--muted); font-size: 0.66rem;
-      cursor: pointer; transition: color 0.2s;
-      position: relative;
+      cursor: pointer; transition: color 0.2s; position: relative;
     }
 
     .nav-btn.active { color: var(--teal-light); }
@@ -580,16 +512,13 @@
 
     .nav-cart-badge.visible { display: flex; }
 
-    .empty {
-      text-align: center; padding: 40px 20px; color: var(--muted);
-    }
+    .empty { text-align: center; padding: 40px 20px; color: var(--muted); }
   </style>
 </head>
 <body>
 
   <!-- ===== PAGE ACCUEIL ===== -->
   <div id="page-home" class="page active">
-
     <div class="hero">
       <img src="banner.jpg" alt="Stone Island 44"
            onerror="this.style.display='none';document.getElementById('hero-fallback').style.display='flex'" />
@@ -601,7 +530,7 @@
       </div>
       <div class="hero-overlay">
         <div class="hero-title">Stone Island 44</div>
-        <div class="hero-sub">De la frappe dans tout le 44</div>
+        <div class="hero-sub">CBD · Nature · Bien-être</div>
       </div>
       <div class="header-cart">
         <div class="cart-icon-btn" onclick="showPage('cart')">
@@ -621,12 +550,14 @@
       <div class="filters-row">
         <select class="filter-select" id="filter-cat" onchange="applyFilters()">
           <option value="">Catégories</option>
-          <option value="Résines CBD">Shit</option>
-          <option value="Huiles CBD">Vert</option>
-          <option value="Cosmétiques">Promo</option>
+          <option value="Résines CBD">Résines CBD</option>
+          <option value="Huiles CBD">Huiles CBD</option>
+          <option value="Cosmétiques">Cosmétiques</option>
+          <option value="Infusions">Infusions</option>
+          <option value="Coffrets">Coffrets</option>
         </select>
         <select class="filter-select" id="filter-brand" onchange="applyFilters()">
-          <option value="">Farmes</option>
+          <option value="">Marques</option>
           <option value="Island Extracts">Island Extracts</option>
           <option value="CoralCBD">CoralCBD</option>
           <option value="TropicalZen">TropicalZen</option>
@@ -647,38 +578,97 @@
     <div class="cart-header">
       <div class="section-title" style="padding:0;">🛒 Mon Panier</div>
     </div>
+
+    <!-- Toggle Nantes -->
+    <div class="nantes-toggle-wrap" id="nantes-wrap" style="display:none;">
+      <div class="nantes-toggle-card" id="nantes-card" onclick="toggleNantes()">
+        <div>
+          <div class="nantes-toggle-label">📍 Livraison sur Nantes ?</div>
+          <div class="nantes-toggle-sub">Gratuite & dans la journée</div>
+        </div>
+        <div class="nantes-switch" id="nantes-switch">
+          <div class="nantes-knob"></div>
+        </div>
+      </div>
+    </div>
+
     <div id="cart-content"></div>
   </div>
 
   <!-- ===== PAGE CONTACT ===== -->
   <div id="page-contact" class="page">
     <div class="section-title">Contact</div>
+
     <div class="legal-banner">
       ⚖️ Tous nos produits contiennent moins de 0,3% de THC, conformément à la réglementation européenne en vigueur. Vente réservée aux majeurs.
     </div>
+
     <div class="contact-wrap">
+
+      <!-- SNAPCHAT -->
       <div class="contact-card">
-        <h3>🏝️ Nous joindre</h3>
-        <div class="contact-row">✉️ <span>contact@stoneisland44.fr</span></div>
-        <div class="contact-row">📱 <span>@stoneisland44_shop</span></div>
-        <div class="contact-row">🕐 <span>Lun–Sam, 10h–19h</span></div>
+        <h3>
+          <img src="https://upload.wikimedia.org/wikipedia/fr/a/a9/Snapchat_logo.png"
+               onerror="this.style.display='none'"
+               style="width:22px;height:22px;object-fit:contain;border-radius:5px;" />
+          Snapchat
+        </h3>
+        <div class="contact-row contact-row-snap" onclick="copyToClipboard('stoneisland44')">
+          <span class="snap-logo">👻</span>
+          <span class="contact-handle">stoneisland44</span>
+          <span class="copy-hint">Appuyer pour copier</span>
+        </div>
       </div>
+
+      <!-- SAV TELEGRAM -->
+      <div class="contact-card">
+        <h3>🎧 SAV & Support</h3>
+        <div class="contact-row contact-row-tg" onclick="openTelegram('si44_sav')">
+          <span class="tg-icon">
+            <svg viewBox="0 0 24 24" fill="#2ab8a0" width="20" height="20">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 14.697l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.443c.537-.194 1.006.131.37.866z"/>
+            </svg>
+          </span>
+          <span class="contact-handle">@si44_sav</span>
+          <span class="copy-hint">Appuyer pour ouvrir</span>
+        </div>
+      </div>
+
+      <!-- SERVEUR PRINCIPAL -->
+      <div class="contact-card">
+        <h3>🏝️ Serveur Principal</h3>
+        <div class="contact-row contact-row-tg" onclick="openTelegram('stoneisland44_officiel')">
+          <span class="tg-icon">
+            <svg viewBox="0 0 24 24" fill="#2ab8a0" width="20" height="20">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 14.697l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.443c.537-.194 1.006.131.37.866z"/>
+            </svg>
+          </span>
+          <span class="contact-handle">@stoneisland44_officiel</span>
+          <span class="copy-hint">Appuyer pour ouvrir</span>
+        </div>
+      </div>
+
+      <!-- LIVRAISON -->
       <div class="contact-card">
         <h3>🚚 Livraison</h3>
-        <div class="contact-row">📦 <span>Colis discret & sécurisé 48h</span></div>
-        <div class="contact-row">🆓 <span>Offerte dès 50 €</span></div>
+        <div class="contact-row">🏙️ <span><b>Nantes</b> — Dans la journée, gratuite</span></div>
+        <div class="contact-row">📦 <span>Hors Nantes — Colis discret & sécurisé 48h</span></div>
+        <div class="contact-row">🆓 <span>Frais offerts dès 50 € (hors Nantes)</span></div>
         <div class="contact-row">↩️ <span>SAV sous 48h</span></div>
       </div>
+
+      <!-- ENGAGEMENTS -->
       <div class="contact-card">
         <h3>✅ Nos engagements</h3>
         <div class="contact-row">🌿 <span>Produits testés en laboratoire</span></div>
         <div class="contact-row">📄 <span>Certificats d'analyse disponibles</span></div>
         <div class="contact-row">🔞 <span>Vente réservée aux +18 ans</span></div>
       </div>
+
     </div>
   </div>
 
-  <!-- ===== MODAL PRODUIT ===== -->
+  <!-- ===== MODAL ===== -->
   <div class="modal-overlay" id="modal" onclick="closeModalBg(event)">
     <div class="modal">
       <div class="modal-handle"></div>
@@ -733,97 +723,80 @@
     {
       id: "si44-001-a1b2c3d4e5",
       name: "Résine Hash CBD 1g",
-      category: "Résines CBD",
-      brand: "Island Extracts",
-      price: 9.90, stock: 25, emoji: "🟤",
-      thc: "< 0.3% THC",
+      category: "Résines CBD", brand: "Island Extracts",
+      price: 9.90, stock: 25, emoji: "🟤", thc: "< 0.3% THC",
       desc: "Résine CBD artisanale, extraction naturelle. Arômes terreux et boisés. Taux CBD : 28%. Certificat labo inclus.",
       legal: "⚖️ Produit légal UE. Taux THC < 0,3%. Consommation déconseillée avant conduite. Réservé aux +18 ans."
     },
     {
       id: "si44-002-b2c3d4e5f6",
       name: "Résine Blonde CBD 2g",
-      category: "Résines CBD",
-      brand: "Island Extracts",
-      price: 17.90, stock: 18, emoji: "🟡",
-      thc: "< 0.3% THC",
+      category: "Résines CBD", brand: "Island Extracts",
+      price: 17.90, stock: 18, emoji: "🟡", thc: "< 0.3% THC",
       desc: "Résine blonde pressée à froid, texture souple et malléable. CBD : 32%. Origine certifiée.",
       legal: "⚖️ Produit légal UE. Taux THC < 0,3%. Réservé aux +18 ans."
     },
     {
       id: "si44-003-c3d4e5f6a7",
       name: "Huile CBD 10% — 10ml",
-      category: "Huiles CBD",
-      brand: "CoralCBD",
-      price: 24.90, stock: 30, emoji: "💧",
-      thc: "< 0.2% THC",
+      category: "Huiles CBD", brand: "CoralCBD",
+      price: 24.90, stock: 30, emoji: "💧", thc: "< 0.2% THC",
       desc: "Huile de CBD full-spectrum 10%, base MCT coco bio. Flacon 10ml avec pipette graduée. Goût naturel.",
       legal: "⚖️ Complément alimentaire. THC < 0,2%. Non médicamenteux. Réservé aux +18 ans."
     },
     {
       id: "si44-004-d4e5f6a7b8",
       name: "Huile CBD 20% — 10ml",
-      category: "Huiles CBD",
-      brand: "CoralCBD",
-      price: 39.90, stock: 12, emoji: "🌊",
-      thc: "< 0.2% THC",
+      category: "Huiles CBD", brand: "CoralCBD",
+      price: 39.90, stock: 12, emoji: "🌊", thc: "< 0.2% THC",
       desc: "Concentration 20% CBD broad-spectrum. Extraction CO₂ supercritique. Flacon 10ml.",
       legal: "⚖️ Complément alimentaire. THC < 0,2%. Non médicamenteux. Réservé aux +18 ans."
     },
     {
       id: "si44-005-e5f6a7b8c9",
       name: "Baume Corps CBD 50ml",
-      category: "Cosmétiques",
-      brand: "TropicalZen",
-      price: 22.00, stock: 20, emoji: "🫙",
-      thc: "0% THC",
+      category: "Cosmétiques", brand: "TropicalZen",
+      price: 22.00, stock: 20, emoji: "🫙", thc: "0% THC",
       desc: "Baume corporel enrichi en CBD 500mg, karité et huile de coco. Idéal après sport. Sans THC.",
       legal: "✅ Cosmétique — usage externe uniquement. Sans THC. Conforme INCI."
     },
     {
       id: "si44-006-f6a7b8c9d0",
       name: "Crème Visage CBD 30ml",
-      category: "Cosmétiques",
-      brand: "TropicalZen",
-      price: 28.00, stock: 15, emoji: "✨",
-      thc: "0% THC",
+      category: "Cosmétiques", brand: "TropicalZen",
+      price: 28.00, stock: 15, emoji: "✨", thc: "0% THC",
       desc: "Crème hydratante au CBD 300mg et aloé vera bio. Anti-stress cutané, peaux sensibles.",
       legal: "✅ Cosmétique — usage externe uniquement. Sans THC. Conforme INCI."
     },
     {
       id: "si44-007-a7b8c9d0e1",
       name: "Infusion CBD Tropical",
-      category: "Infusions",
-      brand: "TropicalZen",
-      price: 11.90, stock: 40, emoji: "🍵",
-      thc: "< 0.2% THC",
+      category: "Infusions", brand: "TropicalZen",
+      price: 11.90, stock: 40, emoji: "🍵", thc: "< 0.2% THC",
       desc: "Mélange hibiscus, mangue, citronnelle et feuilles CBD. 20 infusettes bio. Saveur tropicale.",
       legal: "⚖️ Produit légal. THC < 0,2%. Ne se substitue pas à un traitement médical."
     },
     {
       id: "si44-008-b8c9d0e1f2",
       name: "Coffret Island Starter",
-      category: "Coffrets",
-      brand: "Island Extracts",
-      price: 49.90, stock: 8, emoji: "🎁",
-      thc: "< 0.3% THC",
+      category: "Coffrets", brand: "Island Extracts",
+      price: 49.90, stock: 8, emoji: "🎁", thc: "< 0.3% THC",
       desc: "Coffret découverte : Résine CBD 1g + Huile 10% 10ml + Infusion tropical + guide d'utilisation.",
       legal: "⚖️ Tous les produits du coffret sont légaux UE. THC < 0,3%. Réservé aux +18 ans."
     },
     {
       id: "si44-009-c9d0e1f2a3",
       name: "Résine Ice CBD 1g",
-      category: "Résines CBD",
-      brand: "Island Extracts",
-      price: 12.90, stock: 0, emoji: "⚪",
-      thc: "< 0.3% THC",
+      category: "Résines CBD", brand: "Island Extracts",
+      price: 12.90, stock: 0, emoji: "⚪", thc: "< 0.3% THC",
       desc: "Résine ice-o-lator CBD full-spectrum. Texture granuleuse, arômes floraux intenses. CBD : 40%.",
       legal: "⚖️ Produit légal UE. Taux THC < 0,3%. Réservé aux +18 ans."
     }
   ];
 
   // ===== PANIER =====
-  let cart = {};
+  let cart     = {};
+  let isNantes = false;
 
   function getCartTotal() {
     return Object.values(cart).reduce((s, i) => s + i.product.price * i.qty, 0);
@@ -835,12 +808,20 @@
 
   function updateCartBadges() {
     const count = getCartCount();
-    const show = count > 0;
+    const show  = count > 0;
     ['cart-badge-header','nav-cart-badge'].forEach(id => {
       const el = document.getElementById(id);
       el.textContent = count;
       el.classList.toggle('visible', show);
     });
+  }
+
+  function toggleNantes() {
+    isNantes = !isNantes;
+    document.getElementById('nantes-card').classList.toggle('on', isNantes);
+    document.getElementById('nantes-switch').classList.toggle('on', isNantes);
+    tg.HapticFeedback.selectionChanged();
+    renderCart();
   }
 
   function addToCart() {
@@ -875,13 +856,20 @@
 
   function clearCart() {
     cart = {};
+    isNantes = false;
+    document.getElementById('nantes-card').classList.remove('on');
+    document.getElementById('nantes-switch').classList.remove('on');
     renderCart();
     updateCartBadges();
   }
 
   function renderCart() {
     const container = document.getElementById('cart-content');
-    const items = Object.values(cart);
+    const items     = Object.values(cart);
+
+    // Affiche ou cache le toggle Nantes
+    document.getElementById('nantes-wrap').style.display =
+      items.length > 0 ? 'block' : 'none';
 
     if (items.length === 0) {
       container.innerHTML = `
@@ -908,9 +896,11 @@
         </div>
       </div>`).join('');
 
-    const total = getCartTotal();
-    const livraison = total >= 50 ? 'Offerte 🎉' : '4.90 €';
-    const totalFinal = total >= 50 ? total : total + 4.90;
+    const total      = getCartTotal();
+    const livraison  = isNantes
+      ? 'Gratuite 🏙️ (dans la journée)'
+      : total >= 50 ? 'Offerte 🎉' : '4.90 €';
+    const totalFinal = (isNantes || total >= 50) ? total : total + 4.90;
 
     container.innerHTML = `
       <div class="cart-list">${listHTML}</div>
@@ -929,12 +919,13 @@
     if (!items.length) return;
     tg.HapticFeedback.notificationOccurred('success');
     tg.sendData(JSON.stringify({
-      action: "checkout",
-      items: items.map(i => ({
-        id: i.product.id,
-        name: i.product.name,
+      action:   "checkout",
+      nantes:   isNantes,
+      items:    items.map(i => ({
+        id:    i.product.id,
+        name:  i.product.name,
         price: i.product.price,
-        qty: i.qty
+        qty:   i.qty
       })),
       total: parseFloat(getCartTotal().toFixed(2))
     }));
@@ -1013,6 +1004,22 @@
 
   function closeModal()    { document.getElementById('modal').classList.remove('active'); }
   function closeModalBg(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+
+  // ===== CONTACT =====
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const t = document.getElementById('toast');
+      t.classList.add('toast-snap');
+      showToast(`👻 "${text}" copié !`);
+      setTimeout(() => t.classList.remove('toast-snap'), 2500);
+    }).catch(() => showToast(`👻 Snap : ${text}`));
+    tg.HapticFeedback.impactOccurred('light');
+  }
+
+  function openTelegram(username) {
+    tg.openTelegramLink(`https://t.me/${username}`);
+    tg.HapticFeedback.impactOccurred('light');
+  }
 
   // ===== TOAST =====
   let toastTimer;
