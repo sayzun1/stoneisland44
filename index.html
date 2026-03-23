@@ -139,10 +139,9 @@
     .product-card {
       background: var(--bg-card); border-radius: 16px;
       overflow: hidden; border: 1px solid var(--border);
-      cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
+      transition: transform 0.15s, box-shadow 0.15s;
     }
 
-    .product-card:active { transform: scale(0.97); }
     .product-card:hover  { box-shadow: 0 4px 18px rgba(42,184,160,0.2); border-color: var(--teal-dark); }
     .product-card.out-of-stock { opacity: 0.5; pointer-events: none; }
 
@@ -153,15 +152,6 @@
     }
 
     .product-emoji { font-size: 3.2rem; }
-
-    .product-id-badge {
-      position: absolute; bottom: 6px; left: 50%;
-      transform: translateX(-50%);
-      background: rgba(6,15,24,0.78); backdrop-filter: blur(4px);
-      border-radius: 20px; padding: 3px 9px;
-      font-size: 0.5rem; color: var(--teal-light);
-      white-space: nowrap; max-width: 92%; overflow: hidden; text-overflow: ellipsis;
-    }
 
     .out-of-stock-badge {
       position: absolute; top: 7px; right: 7px;
@@ -183,16 +173,31 @@
       text-overflow: ellipsis; margin-bottom: 3px;
     }
 
-    .product-cat { font-size: 0.67rem; color: var(--teal-light); margin-bottom: 7px; }
+    .product-cat { font-size: 0.67rem; color: var(--teal-light); margin-bottom: 6px; }
 
-    .product-footer { display: flex; justify-content: space-between; align-items: center; }
+    .product-footer {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 8px;
+    }
 
     .product-price {
-      font-weight: 800; font-size: 0.9rem;
+      font-weight: 800; font-size: 0.88rem;
       color: var(--gold); text-shadow: var(--glow-gold);
     }
 
     .product-stock { font-size: 0.67rem; color: var(--muted); }
+
+    /* ===== BOUTON DETAIL ===== */
+    .btn-detail {
+      width: 100%;
+      background: linear-gradient(135deg, #1a7a6a, #2ab8a0);
+      color: #07111a; border: none; border-radius: 20px;
+      padding: 9px; font-size: 0.78rem; font-weight: 800;
+      cursor: pointer; transition: opacity 0.2s;
+      box-shadow: 0 2px 10px rgba(42,184,160,0.25);
+    }
+
+    .btn-detail:active { opacity: 0.8; transform: scale(0.97); }
 
     /* ===== MODAL ===== */
     .modal-overlay {
@@ -205,7 +210,7 @@
     .modal {
       background: var(--bg-card2); border-radius: 22px 22px 0 0;
       padding: 20px 18px 34px; width: 100%;
-      max-height: 90vh; overflow-y: auto;
+      max-height: 92vh; overflow-y: auto;
       border-top: 1px solid var(--border); animation: slideUp 0.22s ease;
     }
 
@@ -253,13 +258,55 @@
       line-height: 1.55; margin-bottom: 14px;
     }
 
-    .modal-price {
-      font-size: 1.4rem; font-weight: 900;
-      color: var(--gold); text-shadow: var(--glow-gold); margin-bottom: 6px;
+    .modal-stock-info { font-size: 0.76rem; color: var(--muted); margin-bottom: 14px; }
+
+    /* ===== SÉLECTEUR GRAMMES ===== */
+    .gram-title {
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--text); margin-bottom: 10px;
     }
 
-    .modal-stock-info { font-size: 0.76rem; color: var(--muted); margin-bottom: 18px; }
+    .gram-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 8px; margin-bottom: 14px;
+    }
 
+    .gram-btn {
+      background: var(--bg); border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 10px 6px;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 4px;
+      cursor: pointer; transition: all 0.15s;
+    }
+
+    .gram-btn:active { transform: scale(0.95); }
+
+    .gram-btn.active {
+      border-color: var(--teal);
+      background: rgba(42,184,160,0.15);
+      box-shadow: 0 0 12px rgba(42,184,160,0.25);
+    }
+
+    .gram-label {
+      font-size: 0.82rem; font-weight: 700; color: var(--text);
+    }
+
+    .gram-price {
+      font-size: 0.8rem; font-weight: 800; color: var(--gold);
+    }
+
+    .gram-btn.active .gram-label { color: var(--teal-light); }
+
+    .gram-total {
+      text-align: center; font-size: 0.95rem;
+      color: var(--muted); margin-bottom: 16px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 10px;
+    }
+
+    .gram-total strong { color: var(--gold); font-size: 1.3rem; }
+
+    /* ===== QTY ===== */
     .qty-row { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
     .qty-label { font-size: 0.85rem; color: var(--muted); }
 
@@ -591,7 +638,6 @@
 
     <div class="contact-wrap">
 
-      <!-- SNAPCHAT -->
       <div class="contact-card">
         <h3>
           <img src="https://upload.wikimedia.org/wikipedia/fr/a/a9/Snapchat_logo.png"
@@ -606,7 +652,6 @@
         </div>
       </div>
 
-      <!-- SAV TELEGRAM -->
       <div class="contact-card">
         <h3>🎧 SAV & Support</h3>
         <div class="contact-row contact-row-tg" onclick="openTelegram('si44_sav')">
@@ -620,7 +665,6 @@
         </div>
       </div>
 
-      <!-- SERVEUR PRINCIPAL -->
       <div class="contact-card">
         <h3>🏝️ Serveur Principal</h3>
         <div class="contact-row contact-row-tg" onclick="openTelegram('stoneisland44_officiel')">
@@ -634,7 +678,6 @@
         </div>
       </div>
 
-      <!-- LIVRAISON -->
       <div class="contact-card">
         <h3>🚚 Livraison</h3>
         <div class="contact-row">🏙️ <span><b>Nantes</b> — Dans la journée, gratuite</span></div>
@@ -650,13 +693,17 @@
   <div class="modal-overlay" id="modal" onclick="closeModalBg(event)">
     <div class="modal">
       <div class="modal-handle"></div>
-      <div class="modal-img-wrap" id="modal-img-wrap"></div>
-      <div class="modal-id"    id="modal-id"></div>
-      <div class="modal-name"  id="modal-name"></div>
-      <div class="modal-cat"   id="modal-cat"></div>
-      <div class="modal-desc"  id="modal-desc"></div>
-      <div class="modal-price" id="modal-price"></div>
+      <div class="modal-img-wrap"   id="modal-img-wrap"></div>
+      <div class="modal-id"         id="modal-id"></div>
+      <div class="modal-name"       id="modal-name"></div>
+      <div class="modal-cat"        id="modal-cat"></div>
+      <div class="modal-desc"       id="modal-desc"></div>
       <div class="modal-stock-info" id="modal-stock"></div>
+
+      <!-- SÉLECTEUR GRAMMES -->
+      <div id="modal-gram-section"></div>
+
+      <!-- QUANTITÉ -->
       <div class="qty-row">
         <span class="qty-label">Quantité :</span>
         <div class="qty-control">
@@ -665,6 +712,7 @@
           <button class="qty-btn" onclick="changeQty(1)">+</button>
         </div>
       </div>
+
       <button class="btn-add-cart" onclick="addToCart()">🛒 Ajouter au panier</button>
       <button class="btn-close"    onclick="closeModal()">Fermer</button>
     </div>
@@ -695,86 +743,138 @@
   tg.ready();
   tg.expand();
 
-  // ===== PRODUITS =====
-  // ⚠️ Remplace les desc/thc/price par tes vrais produits
+  // ===== PRODUITS — modifie ici tes vrais produits & prix =====
   const PRODUCTS = [
     {
       id: "si44-001-a1b2c3d4e5",
-      name: "Résine Hash 1g",
+      name: "Résine Hash",
       category: "SHIT", brand: "Island Extracts",
-      price: 9.90, stock: 25, emoji: "🟤",
-      thc: "15% THC",
-      desc: "Résine premium qualité. Contacte-nous pour plus d'infos."
+      stock: 25, emoji: "🟤", thc: "15% THC",
+      desc: "Résine premium, texture souple. Arômes terreux et boisés. Qualité testée.",
+      grammes: [
+        { label: "1g",  price: 12 },
+        { label: "2g",  price: 22 },
+        { label: "3g",  price: 30 },
+        { label: "5g",  price: 45 },
+        { label: "10g", price: 80 }
+      ]
     },
     {
       id: "si44-002-b2c3d4e5f6",
-      name: "Résine Blonde 2g",
+      name: "Résine Blonde",
       category: "SHIT", brand: "Island Extracts",
-      price: 17.90, stock: 18, emoji: "🟡",
-      thc: "20% THC",
-      desc: "Résine blonde texture souple. Contacte-nous pour plus d'infos."
+      stock: 18, emoji: "🟡", thc: "20% THC",
+      desc: "Résine blonde pressée à froid. Effet puissant, qualité premium.",
+      grammes: [
+        { label: "1g",  price: 13 },
+        { label: "2g",  price: 24 },
+        { label: "3g",  price: 33 },
+        { label: "5g",  price: 50 },
+        { label: "10g", price: 90 }
+      ]
     },
     {
       id: "si44-003-c3d4e5f6a7",
-      name: "Beuh Premium 1g",
-      category: "BEUH", brand: "CoralCBD",
-      price: 10.00, stock: 30, emoji: "🥦",
-      thc: "20% THC",
-      desc: "Beuh premium qualité top. Contacte-nous pour plus d'infos."
+      name: "Résine Ice",
+      category: "SHIT", brand: "Island Extracts",
+      stock: 14, emoji: "⚪", thc: "25% THC",
+      desc: "Ice-o-lator full spectrum. Texture granuleuse, arômes floraux intenses.",
+      grammes: [
+        { label: "1g",  price: 15 },
+        { label: "2g",  price: 28 },
+        { label: "3g",  price: 38 },
+        { label: "5g",  price: 60 },
+        { label: "10g", price: 110 }
+      ]
     },
     {
       id: "si44-004-d4e5f6a7b8",
-      name: "Beuh OG 2g",
+      name: "Beuh Premium",
       category: "BEUH", brand: "CoralCBD",
-      price: 18.00, stock: 12, emoji: "🌿",
-      thc: "22% THC",
-      desc: "OG Kush qualité supérieure. Contacte-nous pour plus d'infos."
+      stock: 30, emoji: "🥦", thc: "20% THC",
+      desc: "Beuh indoor qualité top. Arômes fruités, effet puissant.",
+      grammes: [
+        { label: "1g",  price: 12 },
+        { label: "2g",  price: 22 },
+        { label: "3g",  price: 30 },
+        { label: "5g",  price: 45 },
+        { label: "10g", price: 80 }
+      ]
     },
     {
       id: "si44-005-e5f6a7b8c9",
-      name: "Beuh Haze 1g",
-      category: "BEUH", brand: "TropicalZen",
-      price: 10.00, stock: 20, emoji: "💚",
-      thc: "18% THC",
-      desc: "Haze arômes fruités. Contacte-nous pour plus d'infos."
+      name: "Beuh OG Kush",
+      category: "BEUH", brand: "CoralCBD",
+      stock: 20, emoji: "🌿", thc: "22% THC",
+      desc: "OG Kush indoor. Arômes boisés et épicés, effet long.",
+      grammes: [
+        { label: "1g",  price: 13 },
+        { label: "2g",  price: 24 },
+        { label: "3g",  price: 33 },
+        { label: "5g",  price: 50 },
+        { label: "10g", price: 90 }
+      ]
     },
     {
       id: "si44-006-f6a7b8c9d0",
-      name: "Pack Découverte",
-      category: "PROMO", brand: "Island Extracts",
-      price: 25.00, stock: 15, emoji: "🎁",
-      thc: "—",
-      desc: "Pack découverte : 2g Shit + 2g Beuh au meilleur prix."
+      name: "Beuh Haze",
+      category: "BEUH", brand: "TropicalZen",
+      stock: 25, emoji: "💚", thc: "18% THC",
+      desc: "Haze indoor arômes tropical et fruité. Idéal pour la journée.",
+      grammes: [
+        { label: "1g",  price: 11 },
+        { label: "2g",  price: 20 },
+        { label: "3g",  price: 28 },
+        { label: "5g",  price: 42 },
+        { label: "10g", price: 75 }
+      ]
     },
     {
       id: "si44-007-a7b8c9d0e1",
-      name: "Pack Fidélité 5g",
-      category: "PROMO", brand: "TropicalZen",
-      price: 40.00, stock: 10, emoji: "⭐",
-      thc: "—",
-      desc: "5g au choix Shit ou Beuh — prix dégressif fidélité."
+      name: "Beuh Cookies",
+      category: "BEUH", brand: "Island Extracts",
+      stock: 0, emoji: "🍪", thc: "24% THC",
+      desc: "Girl Scout Cookies — sold out momentanément.",
+      grammes: [
+        { label: "1g",  price: 14 },
+        { label: "2g",  price: 26 },
+        { label: "3g",  price: 36 },
+        { label: "5g",  price: 55 },
+        { label: "10g", price: 100 }
+      ]
     },
     {
       id: "si44-008-b8c9d0e1f2",
-      name: "Résine Ice 1g",
-      category: "SHIT", brand: "Island Extracts",
-      price: 12.90, stock: 8, emoji: "⚪",
-      thc: "25% THC",
-      desc: "Ice-o-lator texture granuleuse, arômes intenses."
+      name: "Pack Découverte",
+      category: "PROMO", brand: "Island Extracts",
+      stock: 15, emoji: "🎁", thc: "—",
+      desc: "2g Shit + 2g Beuh au meilleur prix. Idéal pour tester.",
+      grammes: [
+        { label: "Pack S", price: 30 },
+        { label: "Pack M", price: 50 },
+        { label: "Pack L", price: 80 }
+      ]
     },
     {
       id: "si44-009-c9d0e1f2a3",
-      name: "Beuh Cookies 1g",
-      category: "BEUH", brand: "Island Extracts",
-      price: 11.00, stock: 0, emoji: "🍪",
-      thc: "24% THC",
-      desc: "Girl Scout Cookies — sold out momentanément."
+      name: "Pack Fidélité",
+      category: "PROMO", brand: "TropicalZen",
+      stock: 10, emoji: "⭐", thc: "—",
+      desc: "5g au choix Shit ou Beuh — prix dégressif fidélité client.",
+      grammes: [
+        { label: "5g",  price: 55 },
+        { label: "10g", price: 100 },
+        { label: "20g", price: 180 }
+      ]
     }
   ];
 
   // ===== PANIER =====
-  let cart     = {};
-  let isNantes = false;
+  let cart         = {};
+  let isNantes     = false;
+  let currentProduct = null;
+  let currentQty     = 1;
+  let currentGramIdx = 0;
 
   function getCartTotal() {
     return Object.values(cart).reduce((s, i) => s + i.product.price * i.qty, 0);
@@ -804,23 +904,31 @@
 
   function addToCart() {
     if (!currentProduct) return;
-    if (cart[currentProduct.id]) {
-      cart[currentProduct.id].qty = Math.min(
-        currentProduct.stock,
-        cart[currentProduct.id].qty + currentQty
-      );
+    const gram = currentProduct.grammes[currentGramIdx];
+    const key  = `${currentProduct.id}-${gram.label}`;
+
+    if (cart[key]) {
+      cart[key].qty += currentQty;
     } else {
-      cart[currentProduct.id] = { product: currentProduct, qty: currentQty };
+      cart[key] = {
+        product: {
+          ...currentProduct,
+          name:  `${currentProduct.name} ${gram.label}`,
+          price: gram.price,
+          id:    key
+        },
+        qty: currentQty
+      };
     }
     updateCartBadges();
     closeModal();
-    showToast(`✅ ${currentProduct.name} ajouté !`);
+    showToast(`✅ ${currentProduct.name} ${gram.label} ajouté !`);
     tg.HapticFeedback.notificationOccurred('success');
   }
 
   function changeCartQty(id, delta) {
     if (!cart[id]) return;
-    cart[id].qty = Math.min(cart[id].product.stock, Math.max(1, cart[id].qty + delta));
+    cart[id].qty = Math.max(1, cart[id].qty + delta);
     renderCart();
     updateCartBadges();
   }
@@ -896,9 +1004,9 @@
     if (!items.length) return;
     tg.HapticFeedback.notificationOccurred('success');
     tg.sendData(JSON.stringify({
-      action:   "checkout",
-      nantes:   isNantes,
-      items:    items.map(i => ({
+      action: "checkout",
+      nantes: isNantes,
+      items:  items.map(i => ({
         id:    i.product.id,
         name:  i.product.name,
         price: i.product.price,
@@ -908,7 +1016,7 @@
     }));
   }
 
-  // ===== PRODUITS =====
+  // ===== CATALOGUE =====
   function renderProducts(products) {
     const grid = document.getElementById('products-grid');
     document.getElementById('results-count').textContent = `${products.length} résultats`;
@@ -921,21 +1029,22 @@
     }
 
     grid.innerHTML = products.map(p => `
-      <div class="product-card ${p.stock === 0 ? 'out-of-stock' : ''}"
-           onclick="openModal('${p.id}')">
+      <div class="product-card ${p.stock === 0 ? 'out-of-stock' : ''}">
         <div class="product-img-wrapper">
           <div class="product-emoji">${p.emoji}</div>
           <div class="thc-badge">${p.thc}</div>
-          <div class="product-id-badge">🏷 ${p.id}</div>
           ${p.stock === 0 ? '<div class="out-of-stock-badge">ÉPUISÉ</div>' : ''}
         </div>
         <div class="product-info">
           <div class="product-name">${p.name}</div>
           <div class="product-cat">• ${p.category}</div>
           <div class="product-footer">
-            <span class="product-price">${p.price.toFixed(2)} €</span>
+            <span class="product-price">dès ${p.grammes[0].price} €</span>
             <span class="product-stock">📦 ${p.stock}</span>
           </div>
+          <button class="btn-detail" onclick="openModal('${p.id}')">
+            🔍 Détails & Commander
+          </button>
         </div>
       </div>`).join('');
   }
@@ -950,12 +1059,19 @@
   }
 
   // ===== MODAL =====
-  let currentProduct = null, currentQty = 1;
-
   function openModal(id) {
     currentProduct = PRODUCTS.find(p => p.id === id);
     if (!currentProduct) return;
-    currentQty = 1;
+    currentQty     = 1;
+    currentGramIdx = 0;
+
+    const grammesHTML = currentProduct.grammes.map((g, i) => `
+      <button class="gram-btn ${i === 0 ? 'active' : ''}"
+              onclick="selectGram(${i})">
+        <span class="gram-label">${g.label}</span>
+        <span class="gram-price">${g.price} €</span>
+      </button>`).join('');
+
     document.getElementById('modal-img-wrap').innerHTML = `
       <span style="font-size:5rem">${currentProduct.emoji}</span>
       <div class="modal-thc-tag">${currentProduct.thc}</div>
@@ -964,17 +1080,39 @@
     document.getElementById('modal-name').textContent  = currentProduct.name;
     document.getElementById('modal-cat').textContent   = `${currentProduct.brand} · ${currentProduct.category}`;
     document.getElementById('modal-desc').textContent  = currentProduct.desc || '';
-    document.getElementById('modal-price').textContent = `${currentProduct.price.toFixed(2)} €`;
     document.getElementById('modal-stock').innerHTML   = `📦 ${currentProduct.stock} en stock`;
     document.getElementById('qty-display').textContent = '1';
+
+    document.getElementById('modal-gram-section').innerHTML = `
+      <div class="gram-title">💰 Choisir la quantité</div>
+      <div class="gram-grid">${grammesHTML}</div>
+      <div class="gram-total" id="gram-total">
+        Total : <strong>${currentProduct.grammes[0].price} €</strong>
+      </div>`;
+
     document.getElementById('modal').classList.add('active');
     tg.HapticFeedback.impactOccurred('light');
+  }
+
+  function selectGram(idx) {
+    currentGramIdx = idx;
+    document.querySelectorAll('.gram-btn').forEach((b, i) => {
+      b.classList.toggle('active', i === idx);
+    });
+    const g = currentProduct.grammes[idx];
+    document.getElementById('gram-total').innerHTML =
+      `Total : <strong>${g.price * currentQty} €</strong>`;
   }
 
   function changeQty(delta) {
     const max = currentProduct?.stock || 1;
     currentQty = Math.min(max, Math.max(1, currentQty + delta));
     document.getElementById('qty-display').textContent = currentQty;
+    if (currentProduct?.grammes) {
+      const g = currentProduct.grammes[currentGramIdx];
+      document.getElementById('gram-total').innerHTML =
+        `Total : <strong>${g.price * currentQty} €</strong>`;
+    }
     tg.HapticFeedback.selectionChanged();
   }
 
