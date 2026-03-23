@@ -48,9 +48,9 @@
     .hero img {
       width: 100%;
       display: block;
-      max-height: 200px;
+      height: 260px;
       object-fit: cover;
-      object-position: center 30%;
+      object-position: center 60%;
     }
 
     .hero-overlay {
@@ -58,8 +58,8 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(7,17,26,0) 0%,
-        rgba(7,17,26,0.3) 60%,
+        rgba(7,17,26,0.05) 0%,
+        rgba(7,17,26,0.15) 40%,
         rgba(7,17,26,0.92) 100%
       );
       display: flex;
@@ -73,16 +73,17 @@
       font-weight: 900;
       letter-spacing: 1px;
       color: #fff;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
       font-family: Georgia, 'Times New Roman', serif;
     }
 
     .hero-sub {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       letter-spacing: 3px;
       color: var(--teal-light);
       text-transform: uppercase;
-      margin-top: 2px;
+      margin-top: 3px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.8);
     }
 
     /* ===== HEADER CART ===== */
@@ -100,6 +101,7 @@
       width: 42px; height: 42px;
       display: flex; align-items: center; justify-content: center;
       cursor: pointer;
+      position: relative;
     }
 
     .cart-icon-btn svg { width: 20px; height: 20px; fill: var(--sand); }
@@ -201,12 +203,12 @@
       overflow: hidden;
     }
 
-    .product-emoji { font-size: 3rem; }
+    .product-emoji { font-size: 3.2rem; }
 
     .product-id-badge {
       position: absolute; bottom: 6px; left: 50%;
       transform: translateX(-50%);
-      background: rgba(6,15,24,0.75);
+      background: rgba(6,15,24,0.78);
       backdrop-filter: blur(4px);
       border-radius: 20px; padding: 3px 9px;
       font-size: 0.5rem; color: var(--teal-light);
@@ -223,7 +225,7 @@
 
     .thc-badge {
       position: absolute; top: 7px; left: 7px;
-      background: rgba(42,184,160,0.85);
+      background: rgba(42,184,160,0.88);
       color: #07111a; font-size: 0.55rem;
       padding: 2px 7px; border-radius: 8px; font-weight: 800;
     }
@@ -251,13 +253,12 @@
 
     .product-stock {
       font-size: 0.67rem; color: var(--muted);
-      display: flex; align-items: center; gap: 2px;
     }
 
     /* ===== MODAL ===== */
     .modal-overlay {
       display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.75); z-index: 100;
+      background: rgba(0,0,0,0.78); z-index: 100;
       align-items: flex-end;
     }
 
@@ -266,7 +267,7 @@
     .modal {
       background: var(--bg-card2);
       border-radius: 22px 22px 0 0;
-      padding: 20px 18px 32px; width: 100%;
+      padding: 20px 18px 34px; width: 100%;
       max-height: 90vh; overflow-y: auto;
       border-top: 1px solid var(--border);
       animation: slideUp 0.22s ease;
@@ -301,7 +302,7 @@
 
     .modal-legal-tag {
       position: absolute; top: 10px; right: 10px;
-      background: rgba(232,184,75,0.9);
+      background: rgba(232,184,75,0.92);
       color: #07111a; font-size: 0.62rem;
       padding: 4px 10px; border-radius: 10px; font-weight: 700;
     }
@@ -312,6 +313,7 @@
       border-radius: 20px; padding: 4px 12px;
       font-size: 0.6rem; color: var(--teal-light);
       display: inline-block; margin-bottom: 10px;
+      word-break: break-all;
     }
 
     .modal-name {
@@ -421,7 +423,7 @@
       background: var(--bg-card); border: 1px solid var(--border);
       color: var(--sand); border-radius: 25px;
       padding: 10px 22px; font-size: 0.84rem; cursor: pointer;
-      margin-top: 14px;
+      margin-top: 14px; display: inline-block;
     }
 
     .cart-list { padding: 0 12px; }
@@ -459,7 +461,7 @@
       color: var(--teal-light); width: 28px; height: 28px;
       border-radius: 50%; font-size: 1rem;
       display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
+      cursor: pointer; flex-shrink: 0;
     }
 
     .cart-qty {
@@ -588,16 +590,14 @@
   <!-- ===== PAGE ACCUEIL ===== -->
   <div id="page-home" class="page active">
 
-    <!-- Hero banner -->
     <div class="hero">
-      <!-- ⚠️ Place ton image ici : héberge-la et mets son URL -->
       <img src="banner.jpg" alt="Stone Island 44"
-           onerror="this.style.display='none'; document.getElementById('hero-fallback').style.display='flex'" />
-      <div id="hero-fallback" style="display:none; width:100%; height:200px;
-           background:linear-gradient(135deg,#0a1e30,#0d2a20);
-           align-items:center; justify-content:center; flex-direction:column; gap:6px;">
-        <span style="font-size:2.5rem">🏝️</span>
-        <span style="color:var(--teal-light);font-size:0.7rem;letter-spacing:3px">STONE ISLAND 44</span>
+           onerror="this.style.display='none';document.getElementById('hero-fallback').style.display='flex'" />
+      <div id="hero-fallback" style="display:none;width:100%;height:260px;
+           background:linear-gradient(160deg,#0a1e30 0%,#0d2a20 50%,#071510 100%);
+           align-items:center;justify-content:center;flex-direction:column;gap:8px;">
+        <span style="font-size:3rem">🏝️</span>
+        <span style="color:var(--teal-light);font-size:0.7rem;letter-spacing:4px;font-weight:700">STONE ISLAND 44</span>
       </div>
       <div class="hero-overlay">
         <div class="hero-title">Stone Island 44</div>
@@ -655,11 +655,9 @@
   <!-- ===== PAGE CONTACT ===== -->
   <div id="page-contact" class="page">
     <div class="section-title">Contact</div>
-
     <div class="legal-banner">
       ⚖️ Tous nos produits contiennent moins de 0,3% de THC, conformément à la réglementation européenne en vigueur. Vente réservée aux majeurs.
     </div>
-
     <div class="contact-wrap">
       <div class="contact-card">
         <h3>🏝️ Nous joindre</h3>
@@ -682,7 +680,7 @@
     </div>
   </div>
 
-  <!-- ===== MODAL ===== -->
+  <!-- ===== MODAL PRODUIT ===== -->
   <div class="modal-overlay" id="modal" onclick="closeModalBg(event)">
     <div class="modal">
       <div class="modal-handle"></div>
@@ -732,16 +730,14 @@
   tg.ready();
   tg.expand();
 
-  // ===== PRODUITS CBD LÉGAUX =====
+  // ===== PRODUITS =====
   const PRODUCTS = [
     {
       id: "si44-001-a1b2c3d4e5",
       name: "Résine Hash CBD 1g",
       category: "Résines CBD",
       brand: "Island Extracts",
-      price: 9.90,
-      stock: 25,
-      emoji: "🟤",
+      price: 9.90, stock: 25, emoji: "🟤",
       thc: "< 0.3% THC",
       desc: "Résine CBD artisanale, extraction naturelle. Arômes terreux et boisés. Taux CBD : 28%. Certificat labo inclus.",
       legal: "⚖️ Produit légal UE. Taux THC < 0,3%. Consommation déconseillée avant conduite. Réservé aux +18 ans."
@@ -751,11 +747,9 @@
       name: "Résine Blonde CBD 2g",
       category: "Résines CBD",
       brand: "Island Extracts",
-      price: 17.90,
-      stock: 18,
-      emoji: "🟡",
+      price: 17.90, stock: 18, emoji: "🟡",
       thc: "< 0.3% THC",
-      desc: "Résine blonde pressée à froid, texture souple et malléable. CBD : 32%. Origine : Maroc, certifiée.",
+      desc: "Résine blonde pressée à froid, texture souple et malléable. CBD : 32%. Origine certifiée.",
       legal: "⚖️ Produit légal UE. Taux THC < 0,3%. Réservé aux +18 ans."
     },
     {
@@ -763,9 +757,7 @@
       name: "Huile CBD 10% — 10ml",
       category: "Huiles CBD",
       brand: "CoralCBD",
-      price: 24.90,
-      stock: 30,
-      emoji: "💧",
+      price: 24.90, stock: 30, emoji: "💧",
       thc: "< 0.2% THC",
       desc: "Huile de CBD full-spectrum 10%, base MCT coco bio. Flacon 10ml avec pipette graduée. Goût naturel.",
       legal: "⚖️ Complément alimentaire. THC < 0,2%. Non médicamenteux. Réservé aux +18 ans."
@@ -775,11 +767,9 @@
       name: "Huile CBD 20% — 10ml",
       category: "Huiles CBD",
       brand: "CoralCBD",
-      price: 39.90,
-      stock: 12,
-      emoji: "🌊",
+      price: 39.90, stock: 12, emoji: "🌊",
       thc: "< 0.2% THC",
-      desc: "Concentration maximale 20% CBD broad-spectrum. Extraction CO₂ supercritique. Flacon 10ml.",
+      desc: "Concentration 20% CBD broad-spectrum. Extraction CO₂ supercritique. Flacon 10ml.",
       legal: "⚖️ Complément alimentaire. THC < 0,2%. Non médicamenteux. Réservé aux +18 ans."
     },
     {
@@ -787,9 +777,7 @@
       name: "Baume Corps CBD 50ml",
       category: "Cosmétiques",
       brand: "TropicalZen",
-      price: 22.00,
-      stock: 20,
-      emoji: "🫙",
+      price: 22.00, stock: 20, emoji: "🫙",
       thc: "0% THC",
       desc: "Baume corporel enrichi en CBD 500mg, karité et huile de coco. Idéal après sport. Sans THC.",
       legal: "✅ Cosmétique — usage externe uniquement. Sans THC. Conforme INCI."
@@ -799,11 +787,9 @@
       name: "Crème Visage CBD 30ml",
       category: "Cosmétiques",
       brand: "TropicalZen",
-      price: 28.00,
-      stock: 15,
-      emoji: "✨",
+      price: 28.00, stock: 15, emoji: "✨",
       thc: "0% THC",
-      desc: "Crème hydratante au CBD 300mg et aloé vera bio. Anti-stress cutané, peaux sensibles. Sans THC.",
+      desc: "Crème hydratante au CBD 300mg et aloé vera bio. Anti-stress cutané, peaux sensibles.",
       legal: "✅ Cosmétique — usage externe uniquement. Sans THC. Conforme INCI."
     },
     {
@@ -811,11 +797,9 @@
       name: "Infusion CBD Tropical",
       category: "Infusions",
       brand: "TropicalZen",
-      price: 11.90,
-      stock: 40,
-      emoji: "🍵",
+      price: 11.90, stock: 40, emoji: "🍵",
       thc: "< 0.2% THC",
-      desc: "Mélange hibiscus, mangue, citronnelle et feuilles CBD. Sachet 20 infusettes bio. Saveur tropicale.",
+      desc: "Mélange hibiscus, mangue, citronnelle et feuilles CBD. 20 infusettes bio. Saveur tropicale.",
       legal: "⚖️ Produit légal. THC < 0,2%. Ne se substitue pas à un traitement médical."
     },
     {
@@ -823,9 +807,7 @@
       name: "Coffret Island Starter",
       category: "Coffrets",
       brand: "Island Extracts",
-      price: 49.90,
-      stock: 8,
-      emoji: "🎁",
+      price: 49.90, stock: 8, emoji: "🎁",
       thc: "< 0.3% THC",
       desc: "Coffret découverte : Résine CBD 1g + Huile 10% 10ml + Infusion tropical + guide d'utilisation.",
       legal: "⚖️ Tous les produits du coffret sont légaux UE. THC < 0,3%. Réservé aux +18 ans."
@@ -835,9 +817,7 @@
       name: "Résine Ice CBD 1g",
       category: "Résines CBD",
       brand: "Island Extracts",
-      price: 12.90,
-      stock: 0,
-      emoji: "⚪",
+      price: 12.90, stock: 0, emoji: "⚪",
       thc: "< 0.3% THC",
       desc: "Résine ice-o-lator CBD full-spectrum. Texture granuleuse, arômes floraux intenses. CBD : 40%.",
       legal: "⚖️ Produit légal UE. Taux THC < 0,3%. Réservé aux +18 ans."
@@ -857,8 +837,8 @@
 
   function updateCartBadges() {
     const count = getCartCount();
-    const show  = count > 0;
-    ['cart-badge-header', 'nav-cart-badge'].forEach(id => {
+    const show = count > 0;
+    ['cart-badge-header','nav-cart-badge'].forEach(id => {
       const el = document.getElementById(id);
       el.textContent = count;
       el.classList.toggle('visible', show);
@@ -909,7 +889,7 @@
       container.innerHTML = `
         <div class="cart-empty">
           <div class="cart-empty-icon">🏝️</div>
-          <p>Ton panier est vide</p>
+          <p>Ton panier est vide</p><br>
           <button class="btn-explore" onclick="showPage('home')">Explorer le catalogue</button>
         </div>`;
       return;
@@ -923,13 +903,12 @@
           <div class="cart-item-price">${(item.product.price * item.qty).toFixed(2)} €</div>
         </div>
         <div class="cart-item-controls">
-          <button class="cart-qty-btn" onclick="changeCartQty('${item.product.id}', -1)">−</button>
+          <button class="cart-qty-btn" onclick="changeCartQty('${item.product.id}',-1)">−</button>
           <span class="cart-qty">${item.qty}</span>
-          <button class="cart-qty-btn" onclick="changeCartQty('${item.product.id}', 1)">+</button>
+          <button class="cart-qty-btn" onclick="changeCartQty('${item.product.id}',1)">+</button>
           <button class="cart-remove-btn" onclick="removeFromCart('${item.product.id}')">🗑</button>
         </div>
-      </div>
-    `).join('');
+      </div>`).join('');
 
     const total = getCartTotal();
     const livraison = total >= 50 ? 'Offerte 🎉' : '4.90 €';
@@ -963,7 +942,7 @@
     }));
   }
 
-  // ===== RENDU PRODUITS =====
+  // ===== PRODUITS =====
   function renderProducts(products) {
     const grid = document.getElementById('products-grid');
     document.getElementById('results-count').textContent = `${products.length} résultats`;
@@ -992,17 +971,16 @@
             <span class="product-stock">🌿 ${p.stock}</span>
           </div>
         </div>
-      </div>
-    `).join('');
+      </div>`).join('');
   }
 
   function applyFilters() {
     const cat   = document.getElementById('filter-cat').value;
     const brand = document.getElementById('filter-brand').value;
-    let filtered = PRODUCTS;
-    if (cat)   filtered = filtered.filter(p => p.category === cat);
-    if (brand) filtered = filtered.filter(p => p.brand === brand);
-    renderProducts(filtered);
+    let f = PRODUCTS;
+    if (cat)   f = f.filter(p => p.category === cat);
+    if (brand) f = f.filter(p => p.brand === brand);
+    renderProducts(f);
   }
 
   // ===== MODAL =====
@@ -1012,16 +990,14 @@
     currentProduct = PRODUCTS.find(p => p.id === id);
     if (!currentProduct) return;
     currentQty = 1;
-    const wrap = document.getElementById('modal-img-wrap');
-    wrap.innerHTML = `
+    document.getElementById('modal-img-wrap').innerHTML = `
       <span style="font-size:5rem">${currentProduct.emoji}</span>
       <div class="modal-thc-tag">${currentProduct.thc}</div>
-      <div class="modal-legal-tag">✅ Légal UE</div>
-    `;
-    document.getElementById('modal-id').innerHTML    = `🏷 ${currentProduct.id}`;
-    document.getElementById('modal-name').textContent = currentProduct.name;
-    document.getElementById('modal-cat').textContent  = `${currentProduct.brand} · ${currentProduct.category}`;
-    document.getElementById('modal-desc').textContent = currentProduct.desc;
+      <div class="modal-legal-tag">✅ Légal UE</div>`;
+    document.getElementById('modal-id').innerHTML      = `🏷 ${currentProduct.id}`;
+    document.getElementById('modal-name').textContent  = currentProduct.name;
+    document.getElementById('modal-cat').textContent   = `${currentProduct.brand} · ${currentProduct.category}`;
+    document.getElementById('modal-desc').textContent  = currentProduct.desc;
     document.getElementById('modal-legal').textContent = currentProduct.legal;
     document.getElementById('modal-price').textContent = `${currentProduct.price.toFixed(2)} €`;
     document.getElementById('modal-stock').innerHTML   = `🌿 ${currentProduct.stock} en stock`;
@@ -1037,8 +1013,8 @@
     tg.HapticFeedback.selectionChanged();
   }
 
-  function closeModal()       { document.getElementById('modal').classList.remove('active'); }
-  function closeModalBg(e)    { if (e.target === document.getElementById('modal')) closeModal(); }
+  function closeModal()    { document.getElementById('modal').classList.remove('active'); }
+  function closeModalBg(e) { if (e.target === document.getElementById('modal')) closeModal(); }
 
   // ===== TOAST =====
   let toastTimer;
